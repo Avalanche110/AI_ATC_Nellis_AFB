@@ -122,18 +122,24 @@ function AI_Traffic:SpawnDeparture()
   end)
 
   local ACType = SpawnObject.SpawnTemplate.units[1].type
-  local Parking = AI_Traffic.TrafficParking[ACType] or {17}
+  local Parking = AI_Traffic.TrafficParking[ACType] or {16}
   local Result = UTILS.OneLineSerialize(Parking)
   env.info(string.format("[AI_TRAFFIC] Nominated Parking Spots: %s -- %s", tostring(spawnTemplateName), Result))
 
-  SpawnObject:SpawnAtParkingSpot(AI_ATC.AirbaseID, Parking, SPAWN.Takeoff.Cold)
+  local SpwnGrp = SpawnObject:SpawnAtParkingSpot(AI_ATC.AirbaseID, Parking, SPAWN.Takeoff.Cold)
+  
+  SCHEDULER:New(nil, function()
+    if not SpwnGrp then
+      AI_Traffic:SpawnDeparture()
+    end
+  end, {}, 2)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --*****************************************************************************AI_TRAFFIC SPAWN APPROACH************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_Traffic:SpawnApproach()
   local ManeuverTbl
-  if AI_ATC.Procedure=="IFR" then
+  if AI_ATC.Procedure=="VFR" then
     ManeuverTbl = {
       "AI_Outside Downwind","AI_Straight in","AI_Overhead","AI_Missed Approach",
       "AI_Outside Downwind-2","AI_Straight in-2","AI_Overhead-2","AI_Missed Approach-2"
@@ -296,7 +302,7 @@ end
 --*****************************************************************************AI_TRAFFIC INITIALIZE*****************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_Traffic:SpawnTraffic()
-  local Randomizer = 2--math.random(1, 2)
+  local Randomizer = math.random(1, 2)
   if Randomizer==1 then
     AI_Traffic:SpawnDeparture()
   else

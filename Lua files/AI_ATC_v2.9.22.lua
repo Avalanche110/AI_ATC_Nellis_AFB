@@ -1224,8 +1224,8 @@ Departure_Table = {
   ["FYTTR"] = {
     RequestedProcedure = "VFR",
     VFR                = "FYTTR",
-    Recovery           = "Dudbe",
-    RecoveryPlate      = "Dudbe",
+    Recovery           = "DUDBE",
+    RecoveryPlate      = "STRYK",
     SID                = "FYTTR 7",
     Instruction        = "FLEX WEST",
     Code               = "FYTTR"
@@ -1233,8 +1233,8 @@ Departure_Table = {
   ["MORMON MESA"] = {
     RequestedProcedure = "VFR",
     VFR                = "MORMON MESA",
-    Recovery           = "Acton",
-    RecoveryPlate      = "Acton",
+    Recovery           = "ACTON",
+    RecoveryPlate      = "ACTON",
     SID                = "MORMON MESA 8",
     Instruction        = "FLEX MMM TRANSITION",
     Code               = "MORMON MESA"
@@ -1250,9 +1250,9 @@ Departure_Table = {
   },
   ["FYTTR 7"] = {
     RequestedProcedure = "IFR",
-    VFR                = "DREAM",
-    Recovery           = "ARCOE",
-    RecoveryPlate      = "ARCOE",
+    VFR                = "FYTTR",
+    Recovery           = "DUDBE",
+    RecoveryPlate      = "STRYK",
     SID                = "FYTTR 7",
     Instruction        = "FYTTR 7",
     Code               = "FYTTR 7"
@@ -1260,8 +1260,8 @@ Departure_Table = {
   ["MORMON MESA 8"] = {
     RequestedProcedure = "IFR",
     VFR                = "MORMON",
-    Recovery           = "Acton",
-    RecoveryPlate      = "Acton",
+    Recovery           = "ACTON",
+    RecoveryPlate      = "ACTON",
     SID                = "MORMON MESA 8",
     Instruction        = "MORMON MESA 8",
     Code               = "MORMON MESA 8"
@@ -1271,7 +1271,7 @@ Departure_Table = {
     RequestedProcedure = "IFR",
     VFR                = "SAR IFR",
     Recovery           = "SAR IFR",
-    RecoveryPlate      = "Acton",
+    RecoveryPlate      = "ACTON",
     SID                = "SAR IFR",
     Instruction        = "IFR",
     Code               = "SAR IFR"
@@ -1459,8 +1459,8 @@ AI_ATC.Radio = {
   }
 
 AI_ATC.Procedure = "IFR"
-AI_ATC.Departure.SID = "DREAM 7"
-AI_ATC.Departure.VFR = "DREAM"
+AI_ATC.Departure.SID = "FYTTR 7"
+AI_ATC.Departure.VFR = "FYTTR"
 AI_ATC.Approach.PatternAltitude = "9"
 
 AI_ATC.TaxiWay = {
@@ -3717,7 +3717,7 @@ AI_ATC_SoundFiles.Ground.Oclock = {
   ["10"] = { filename = "TenOclock.ogg", duration = 0.655 },
   ["11"] = { filename = "ElevenOclock.ogg", duration = 0.885 },
   ["12"] = { filename = "TwelveOclock.ogg", duration = 0.733 },
-  }
+}
   
 AI_ATC_SoundFiles.Departure.Oclock = {
   ["1"] = { filename = "OneOclock.ogg", duration = 0.720 },
@@ -4088,6 +4088,7 @@ AI_ATC_SoundFiles.Ground.Aircraft = {
   ["Tu-95MS"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["Yak-40"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["C-130"] = { filename = "Heavy.ogg", duration = 0.370 },
+  ["C-130J-30"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["IL-78M"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["WingLoong-I"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["E-3A"] = { filename = "Heavy.ogg", duration = 0.370 },
@@ -4718,7 +4719,6 @@ ATM.TaxiQueue ={}
 ATM.TaxiController = {}
 
 ATM.TowerControl = {}
-
 
 GENERIC_TRANSMITTER = {
   ["visible"] = false,
@@ -6042,8 +6042,9 @@ end
 --*********************************************************************************INIT MENUS************************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:InitMenus(Alias)
-  local Group = ATM.ClientData[Alias].Unit:GetGroup()
-  local AI_ATC_Menu = ATM.ClientData[Alias].ParentMenu
+  local ClientData = ATM.ClientData[Alias]
+  local Group = ClientData.Unit:GetGroup()
+  local AI_ATC_Menu = ClientData.ParentMenu
    
   local AI_ATC_Clearance_Menu = MENU_GROUP:New(Group, "Clearance", AI_ATC_Menu)
   local AI_ATC_Ground_Menu = MENU_GROUP:New(Group, "Ground", AI_ATC_Menu)
@@ -6055,7 +6056,8 @@ function AI_ATC:InitMenus(Alias)
   local NATCFSALLYMenu = MENU_GROUP:New(Group, "NATCF SALLY", Agency)
   local NATCFLEEMenu = MENU_GROUP:New(Group, "NATCF LEE", Agency)
   local RepeatMenu =  MENU_GROUP:New(Group, "Repeat transmission", Agency)
-
+  local OptionsMenu =  MENU_GROUP:New(Group, "Options", Agency)
+  local JoinGroupMenu  = MENU_GROUP:New(Group, "Join Group", OptionsMenu)
   
   ATM.ClientData[Alias].ClearanceMenu = AI_ATC_Clearance_Menu
   ATM.ClientData[Alias].GroundMenu = AI_ATC_Ground_Menu
@@ -6067,6 +6069,9 @@ function AI_ATC:InitMenus(Alias)
   ATM.ClientData[Alias].NATCFLEE_Menu = NATCFLEEMenu
   ATM.ClientData[Alias].ApproachMenu = ApproachMenu
   ATM.ClientData[Alias].RepeatMenu = RepeatMenu
+  ATM.ClientData[Alias].JoinGroupMenu = JoinGroupMenu
+  
+  AI_ATC:JoinGroup(Alias)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --*********************************************************************************RESET MENUS***********************************************************************************--
@@ -6118,7 +6123,6 @@ function AI_ATC:RepeatLastTransmission(Alias, Object)
   local MenuObject = ATM.ClientData[Alias].RepeatMenu
   
   if MenuObject and MenuObject.MenuCount then
-    --UTILS.PrintTableToLog(MenuObject, 2, false)
     MenuObject:RemoveSubMenus()
   end
 
@@ -6146,6 +6150,7 @@ function AI_ATC:ClearanceSubMenu(Alias)
   
   local function SetDeparture(Type)
     local departureData = Departure_Table[Type]
+    ClientData = ATM.ClientData[Alias]
     if ClientData then
       ClientData.RequestedProcedure = departureData.RequestedProcedure
       ClientData.VFR                = departureData.VFR
@@ -6204,8 +6209,6 @@ function AI_ATC:ClearanceSubMenu(Alias)
     end
   end, Group)
   
-  --local JoinGroupMenu  = MENU_GROUP:New(Group, "Join Group...", OptionsMenu)
-  --ClientData.JoinGroupMenu = JoinGroupMenu
 
   local Menu1 = MENU_GROUP:New(Group, "Bluefor...", CallsignMenu)
   local Menu2 = MENU_GROUP:New(Group, "Redfor...",   CallsignMenu)
@@ -6301,7 +6304,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:SeperateFromGroup(Alias)
   local Group = GROUP:FindByName(Alias)
-  local Menu = MENU_GROUP:New(Group, "Seperate from Group...")
+  local Menu = MENU_GROUP:New(Group, "Seperate from Group", AI_ATC.ParentMenu)
   
   MENU_GROUP_COMMAND:New(Group, "Seperate from group", Menu, function() AI_ATC:SeperateGroup(Alias, Menu) end, Group)
   
@@ -7287,7 +7290,7 @@ function AI_ATC:SetCallsign(Alias, Callsign, Integer)
   end
   
   if AI_Instructor and AI_Instructor.Active then
-    local FlightLeadCallsign = NewCallsign:sub(1, -2) .. "1"
+    local FlightLeadCallsign = NewCallsign:sub(1, -2) .. "2"
     AI_Instructor.Callsign = FlightLeadCallsign
     NewCallsign = NewCallsign:sub(1, -2) .. "2"
   end
@@ -7302,61 +7305,157 @@ function AI_ATC:SetCallsign(Alias, Callsign, Integer)
   end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--*********************************************************************************AI_ATC JOIN GROUP MENU***********************************************************************--
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function AI_ATC:JoinGroup(Alias)
+  local ClientData = ATM.ClientData[Alias]
+  if not ClientData then return end
+
+  local Unit = ClientData.Unit
+  if not Unit or not Unit:IsAlive() then
+    return
+  end
+
+  local Group = Unit:GetGroup()
+  if not Group then
+    return
+  end
+
+  local GroupMenu = ClientData.JoinGroupMenu
+  if not GroupMenu then
+    return
+  end
+  
+  local SchedulerObject
+
+  SchedulerObject = SCHEDULER:New(nil, function()
+    if not ATM.ClientData[Alias] or not Unit or not Unit:IsAlive() then
+      SchedulerObject:Stop()
+      return
+    end
+    
+    if GroupMenu and GroupMenu.RemoveSubMenus then
+      GroupMenu:RemoveSubMenus()
+    else
+      SchedulerObject:Stop()
+      return
+    end
+    
+    local ClientCoord = Unit:GetCoordinate()
+    local ClientTbl = {}
+    
+      for alias, data in pairs(ATM.ClientData) do
+        local clientAlias = alias
+        if clientAlias~= Alias then
+          local UnitObject = data.Unit
+          if UnitObject then
+            local coord = UnitObject:GetCoordinate()
+            local Distance = ClientCoord:Get2DDistance(coord)
+            table.insert(ClientTbl, {Name = clientAlias, Distance = Distance})
+          end
+        end
+      end
+      
+      table.sort(ClientTbl, function(a, b)
+        return a.Distance < b.Distance
+      end)
+
+      local maxItems = math.min(10, #ClientTbl)
+      for i = 1, maxItems do
+        local data = ClientTbl[i]
+        local ClientName = data.Name
+        MENU_GROUP_COMMAND:New(Group, ClientName, GroupMenu, function() AI_ATC:AddPlayerToGroup(ClientName, Alias) end, Group)
+      end
+
+  end,{}, 0.5, 60)
+
+end
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --***************************************************************************AI_ATC SET GROUP************************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function AI_ATC:AddPlayerToGroup(GroupName, Player)
-  local Grp = GROUP:FindByName(GroupName)
-  local Plyr = GROUP:FindByName(Player)
-  if not Grp then
+function AI_ATC:AddPlayerToGroup(GroupName, PlayerAlias)
+  local HostGroup = GROUP:FindByName(GroupName)
+  if not HostGroup then
     env.info(("AI_ATC:AddPlayerToGroup -> Group not found '%s'."):format(GroupName))
     return
   end
-  
-  if not Plyr then
-    env.info(("AI_ATC:AddPlayerToGroup -> Group not found '%s'."):format(Player))
+
+  local clientData = ATM.ClientData[PlayerAlias]
+  if not clientData then
+    env.info(("AI_ATC:AddPlayerToGroup -> No ClientData found for '%s'."):format(PlayerAlias))
     return
   end
-  
-  if not AI_ATC.FlightGroup[GroupName] then
-    AI_ATC.FlightGroup[GroupName] = {
-      [Player] = {}
-    }
-  else
-    AI_ATC.FlightGroup[GroupName][Player] = {}
+
+  local PlayerGroup = clientData.Group or (clientData.Unit and clientData.Unit:GetGroup())
+  if not PlayerGroup then
+    env.info(("AI_ATC:AddPlayerToGroup -> No group for player '%s'."):format(PlayerAlias))
+    return
   end
-  
-  if ATM.ClientData[Player] then
-    local Unit = ATM.ClientData[Player].Unit
-    local AI_ATC_Menu = ATM.ClientData[Player].ParentMenu
-    AI_ATC:TerminateSchedules(Player)
-    AI_ATC_Menu:Remove()
-    AI_ATC:SeperateFromGroup(Player)
+
+  local Unit       = clientData.Unit
+  local ParentMenu = clientData.ParentMenu
+  AI_ATC:TerminateSchedules(PlayerAlias)
+  if ParentMenu and ParentMenu.RemoveSubMenus then
+    ParentMenu:RemoveSubMenus()
+  end
+  AI_ATC:SeperateFromGroup(PlayerAlias)
+
+  if Unit and Unit:IsAlive() then
     USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
-    ATM.ClientData[Player] = nil
   end
+  
+  if ATM.ClientData[PlayerAlias].CrewChief then
+    ATM.ClientData[PlayerAlias].CrewChief:Destroy()
+  end
+
+  ATM.ClientData[PlayerAlias] = nil
+  ATM.GroundControl[PlayerAlias] = nil
+  ATM.TaxiController[PlayerAlias] = nil
+  ATM.TowerControl[PlayerAlias] = nil
+
+  AI_ATC.FlightGroup[GroupName] = AI_ATC.FlightGroup[GroupName] or {}
+  AI_ATC.FlightGroup[GroupName][PlayerAlias] = {
+    HostGroup   = HostGroup,
+    PlayerGroup = PlayerGroup,
+  }
+
+  env.info(("AI_ATC:AddPlayerToGroup -> '%s' joined flight group '%s'."):format(PlayerAlias, GroupName))
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --***************************************************************************AI_ATC SEPERATE GROUP*******************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:SeperateGroup(Alias, Menu)
   local function TableIsEmpty(t)
+    if not t then
+      return true
+    end
     for _, _ in pairs(t) do
       return false
     end
     return true
   end
-  
+
   local Group = GROUP:FindByName(Alias)
   if Group then
     local Unit = Group:GetUnit(1)
-    USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
-    for groupName, groupTable in pairs(AI_ATC.FlightGroup) do
-      if groupTable[Alias] then
-        AI_ATC.FlightGroup[groupName][Alias] = nil
+    if Unit and Unit:IsAlive() then
+      USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
+    end
+  end
+
+  local menuRemoved = false
+
+  for groupName, groupTable in pairs(AI_ATC.FlightGroup) do
+    if groupTable[Alias] then
+      groupTable[Alias] = nil
+
+      if not menuRemoved and Menu and Menu.Remove then
         Menu:Remove()
-        if TableIsEmpty(AI_ATC.FlightGroup[groupName]) then
-          AI_ATC.FlightGroup[groupName] = nil
-        end
+        menuRemoved = true
+      end
+
+      if TableIsEmpty(groupTable) then
+        AI_ATC.FlightGroup[groupName] = nil
       end
     end
   end
@@ -7660,14 +7759,14 @@ function AI_ATC:InitClients()
         ATM.ClientData[clientAlias].Squawk = Squawk
 
         AI_ATC:UpdateFlightCallsign(clientAlias)
-
         if group:IsAirborne() then
 
           ATM.ClientData[clientAlias].State = "AirBorne"
           local parentMenu = AI_ATC.ParentMenu
           ATM.ClientData[clientAlias].ParentMenu = parentMenu
+          
           AI_ATC:InitMenus(clientAlias)
-
+          AI_ATC:ResetMenus(clientAlias)
           if LSVTCN then
             local range = coord:Get2DDistance(LSVTCN)
             if range >= 74080 then
@@ -7683,11 +7782,12 @@ function AI_ATC:InitClients()
               AI_ATC:DepartureSubMenu(clientAlias)
             end
           end
-
+          
         else
           local parentMenu = AI_ATC.ParentMenu
           ATM.ClientData[clientAlias].ParentMenu = parentMenu
           AI_ATC:InitMenus(clientAlias)
+          AI_ATC:ResetMenus(clientAlias)
           local range = coord:Get2DDistance(LSVTCN)
           if range >= 74080 then
             ATM.ClientData[clientAlias].State = "AirBorne"
@@ -8061,10 +8161,19 @@ function AI_ATC:TowerController(Debug)
     return LandingType
   end
   
+  
   SCHEDULER:New(nil, function()
     local Runway = AI_ATC.Runways.Landing[1]
     local TowerRadar = SET_GROUP:New():FilterZones({TowerZone}):FilterCategoryAirplane():FilterCategoryHelicopter():FilterActive(true):FilterOnce()
     local RunwayHeading = 209
+    
+    local function CheckFlightGroups()
+      for groupName, groupTable in pairs(AI_ATC.FlightGroup) do
+        for ClientName, _ in pairs(groupTable) do
+          TowerRadar:RemoveGroupsByName(ClientName)
+        end
+      end
+    end
     
     local SchedulerObject2, Break
     
@@ -8081,6 +8190,7 @@ function AI_ATC:TowerController(Debug)
         if name then TowerRadar:RemoveGroupsByName(name) end
         return
       end
+      CheckFlightGroups()
       TowerRadar:RemoveGroupsByName(AI_Wingman_1)
       TowerRadar:RemoveGroupsByName(AI_Wingman_2)
       TowerRadar:RemoveGroupsByName(AI_Wingman_3)
@@ -8870,7 +8980,7 @@ function AI_ATC:ProvideInstruction(Alias, Agency, State)
       },
       ["Clearance"] = {
         ["RequestClearance"] = {"Clearance delivery "..Callsign..", Clearance on Request, VFR, FLEX NORTH"},
-        ["ReadBack"] = {"Clearance delivery "..Callsign..", Clearance on Request, VFR, FLEX NORTH"},
+        ["ReadBack"] = {Callsign..", Squawk "..Squawk},
       },
       ["Tower"] = {
         ["HoldShort"] = {"Tower "..Callsign.." Holding short"},
@@ -10628,6 +10738,7 @@ function AI_ATC:EngineStart(Alias, Audio)
   local Title = string.format("%s %s", AI_ATC.Airbase, Transmitter)
   local ClientData = ATM.ClientData[Alias]
   local Unit = ClientData.Unit
+  local Type = ClientData.Type
   local Group = Unit:GetGroup()
   local Callsign = ClientData.Callsign
   local FlightCallsign = ClientData.FlightCallsign
@@ -10690,6 +10801,15 @@ function AI_ATC:EngineStart(Alias, Audio)
       RadioObject:NewTransmission("local.ogg", 0.383, "Airbase_ATC/Ground/SoundFiles/", nil, nil)
       RadioObject:NewTransmission("AsFragged.ogg", 0.64, "Airbase_ATC/Ground/SoundFiles/", nil, nil)
     end
+    
+    SCHEDULER:New(nil, function()
+      if Type=="C-130J-30" then
+        if ATM.ClientData[Alias].CrewChief then
+          ATM.ClientData[Alias].CrewChief:Destroy()
+        end
+      end
+    end,{}, 10)
+    
   end,{}, Delay )
 
 end
@@ -11506,7 +11626,7 @@ function AI_ATC:VFRDeparture(Alias, Audio)
       VFR = "FLEX"
       Radius = 55560
     elseif Helo==true then
-      VFR = VFRProceedure
+      VFR = VFRProcedure
       Radius = 37040
     end
     TurnPermit=false
@@ -11834,7 +11954,7 @@ function AI_ATC:IFRDeparture(Alias, Audio)
   local CallsignSub = Flight and FlightCallsign or Callsign
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:IFRDeparture(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:IFRDeparture(Alias, Audio) end, Transmitter)==false then
     return
   end
   
@@ -11906,7 +12026,7 @@ function AI_ATC:IFRDeparture(Alias, Audio)
   local function ServiceTerminate()
     SchedulerObject = SCHEDULER:New(nil, function()
       if Unit and Unit:IsAlive() and ATM.ClientData[Alias] then
-        local UnitCoord = Unit:GetCoord()
+        local UnitCoord = Unit:GetCoordinate()
         local Failsafe = UnitCoord:Get2DDistance(LSVTCN)
         if Failsafe >= 64820 then
           AI_ATC:RadarTerminate(Alias)
@@ -11918,7 +12038,8 @@ function AI_ATC:IFRDeparture(Alias, Audio)
     end,{}, 10, 10, nil, 7200 )
     table.insert(SchedulerObjects, SchedulerObject)
   end
-  if Audio~=nil then
+  
+  if not Audio then
     ServiceTerminate()
   end
 
@@ -13051,11 +13172,15 @@ function AI_ATC:ApproachManager(Alias, Type, Missed)
     local RadioObject  = AI_ATC:FindTransmitter(Alias, Transmitter)
     SCHEDULER:New(nil, function()
       AI_ATC:ChannelOpen(12, Transmitter, Alias)
-      local Subtitle = string.format("%s: %s, %s Approach, fly heading %s.", Title, CallsignSub, Airbase, NewHeading)
+      local Subtitle = string.format("%s: %s, %s Approach, fly heading %s.", Title, CallsignSub, Title, NewHeading)
       RadioObject:NewTransmission("DeadAir.ogg", 0.100, "Airbase_ATC/Ground/SoundFiles/", nil, 0.3, Subtitle, 5)
       AI_ATC:Callsign(Callsign, RadioObject, Transmitter, Flight)
-      AI_ATC:AirbaseName(Airbase, RadioObject, Transmitter)
-      RadioObject:NewTransmission("Approach.ogg", 0.569,  "Airbase_ATC/Departure/SoundFiles/", nil, 0.01)
+      if Type~="PAR" then
+        AI_ATC:AirbaseName(Airbase, RadioObject, Transmitter)
+        RadioObject:NewTransmission("Approach.ogg", 0.569, "Airbase_ATC/Departure/SoundFiles/", nil, 0.01)
+      else
+        RadioObject:NewTransmission("GCA2.ogg", 0.987, "Airbase_ATC/Departure/SoundFiles/", nil, 0.01)
+      end
       RadioObject:NewTransmission("FlyHeading.ogg", 0.801,"Airbase_ATC/Departure/SoundFiles/", nil, 0.01)
       AI_ATC:ReadHeading(NewHeading, RadioObject, Transmitter)
     end, {}, 0.5)
@@ -14503,7 +14628,7 @@ function AI_ATC:TowerTraffic(Alias)
   local StateTbl = {
     ["Low Key"]              = {filename = "LowKey.ogg", duration = 0.686, subtitle = "at Low Key"},
     ["High Key"]              = {filename = "HighKey.ogg", duration = 0.742, subtitle = "at High Key"},
-    ["On Departure"]         = {filename = "OnDeparture.ogg", duration = 0.811, subtitle = "on departure"},
+    ["On Departure"]         = {filename = "OnDeparture.ogg", duration = 0.771, subtitle = "on departure"},
     ["On Approach"]          = {filename = "OnApproach.ogg", duration = 0.719, subtitle = "on approach"},
     ["On Final Approach"]    = {filename = "OnFinal.ogg", duration = 0.570, subtitle = "on final"},
     ["Initial"]              = {filename = "AtInitial.ogg", duration = 0.606, subtitle = "at Initial"},
@@ -14951,6 +15076,7 @@ function AI_ATC:Tower_Checkin(Alias, audio)
       end
       if not TrafficType then TrafficType = "" end
       Report = "report 5 miles"
+      TrafficAudio = AI_ATC_SoundFiles[RadioKey].Aircraft[TrafficType]
       TrafficSub = string.format("your number %s behind the %s %s", LandingNo, TrafficType, StateSub)
       Subtitle = string.format("%s: %s %s, %s, %s to runway %s .", Title, CallsignSub, Title, Report, TrafficSub, Runway)
     end, {}, 0.2)
@@ -14984,7 +15110,7 @@ function AI_ATC:Tower_Checkin(Alias, audio)
         RadioObject:NewTransmission("Report5Miles.ogg", 1.242, "Airbase_ATC/Ground/SoundFiles/", nil, 0.1)
         RadioObject:NewTransmission("YourNumber.ogg", 0.522, "Airbase_ATC/Ground/SoundFiles/", nil, 0.1)
         AI_ATC:ReadDigits(LandingNo, RadioObject, Transmitter)
-        if TrafficType and StateData then
+        if TrafficType and StateData and TrafficAudio then
           RadioObject:NewTransmission("Behind.ogg", 0.557, string.format("Airbase_ATC/%s/SoundFiles/", RadioKey), nil, 0.1, nil, 1.6)
           RadioObject:NewTransmission(string.format("Aircraft/%s", TrafficAudio.filename), TrafficAudio.duration, string.format("Airbase_ATC/%s/", RadioKey), nil, nil)
           RadioObject:NewTransmission(string.format("SoundFiles/%s", StateData.filename), StateData.duration, string.format("Airbase_ATC/%s/", RadioKey), nil, 0.03)
@@ -15962,7 +16088,9 @@ function AI_ATC:ClosedTraffic(Alias, audio)
       ATM.TowerControl[Alias].RequestedApproach = "Closed traffic"
       ATM.TowerControl[Alias].State = Position
       SCHEDULER:New(nil, function()
-        ATM.TowerControl[Alias].Contacts = {}
+        if ATM.TowerControl and ATM.TowerControl[Alias] and ATM.TowerControl[Alias].Contacts then
+          ATM.TowerControl[Alias].Contacts = {}
+        end
       end, {}, 5)
     end
   end, {}, 0.5 )
@@ -16166,7 +16294,9 @@ function AI_ATC:BreakOut(Alias, NavPoint)
       ATM.TowerControl[Alias].RequestedApproach = "Straight in"
       ATM.TowerControl[Alias].State = "Outside Downwind"
       SCHEDULER:New(nil, function()
-        ATM.TowerControl[Alias].Contacts = {}
+        if ATM.TowerControl and ATM.TowerControl[Alias] and ATM.TowerControl[Alias].Contacts then
+          ATM.TowerControl[Alias].Contacts = {}
+        end
       end, {}, 5)
     end
     if ATM.ClientData[Alias].WingmanMenu then
@@ -16269,7 +16399,9 @@ function AI_ATC:GoAround(Alias, Type)
         ATM.TowerControl[Alias].RequestedApproach = "Straight in"
         ATM.TowerControl[Alias].State = "Outside Downwind"
         SCHEDULER:New(nil, function()
-          ATM.TowerControl[Alias].Contacts = {}
+          if ATM.TowerControl and ATM.TowerControl[Alias] and ATM.TowerControl[Alias].Contacts then
+            ATM.TowerControl[Alias].Contacts = {}
+          end
         end, {}, 5)
       elseif  finalApproach == "IFR" then
         ATM.TowerControl[Alias].RequestedApproach = "Missed Approach"
@@ -16366,7 +16498,7 @@ function AI_ATC:BackToRadar(Alias)
   local Title = string.format("%s %s", AI_ATC.Airbase, Transmitter)
   local ClientData = ATM.ClientData[Alias]
   local Unit = ClientData.Unit
-  local Type = ClientData.Chart
+  local Type = ClientData.Type
   local Group = Unit:GetGroup()
   local ClientCount = Group:CountAliveUnits()
   local Callsign = ClientData.Callsign
@@ -16595,13 +16727,13 @@ function AI_ATC:LandingManager(Alias, PAR)
   if not PAR then
     variableRange = 3352
     variableAngle = 10
-    variableSpeed = 50
+    variableSpeed = 90
     AI_ATC:TerminateSchedules(Alias)
     AI_ATC:GoAroundSubMenu(Alias)
   else
     variableRange = 9260
     variableAngle = 15
-    variableSpeed = 90
+    variableSpeed = 50
   end
 
   local function FinalCheck()
