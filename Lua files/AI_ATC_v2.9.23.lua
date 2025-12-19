@@ -4000,6 +4000,7 @@ AI_ATC_SoundFiles.Ground.Aircraft = {
   ["F-5E-3"] = { filename = "F5E.ogg", duration = 0.580 },
   ["F-14A"] = { filename = "F14.ogg", duration = 0.592 },
   ["F-14A-135-GR"] = { filename = "F14.ogg", duration = 0.592 },
+  ["F-14A-135-GR-Early"] = { filename = "F14.ogg", duration = 0.592 },
   ["F-14B"] = { filename = "F14.ogg", duration = 0.592 },
   ["F-15C"] = { filename = "F15.ogg", duration = 0.557 },
   ["F-15E"] = { filename = "F15.ogg", duration = 0.557 },
@@ -6089,6 +6090,21 @@ function AI_ATC:ResetMenus(Alias)
   Client.ApproachMenu:RemoveSubMenus()
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--*********************************************************************************REMOVE MENUS***********************************************************************************--
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function AI_ATC:RemoveMenus(Alias)
+  local Client = ATM.ClientData[Alias]
+  
+  if not Client then return end
+  
+  Client.ClearanceMenu:Remove()
+  Client.GroundMenu:Remove()
+  Client.TowerMenu:Remove()
+  Client.DepartureMenu:Remove()
+  Client.OtherAgency:Remove()
+  Client.ApproachMenu:Remove()
+end
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --*********************************************************************************RESET MENUS***********************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:GenerateEmptyMenu(Alias, Transmitter, count)
@@ -7305,29 +7321,81 @@ function AI_ATC:SetCallsign(Alias, Callsign, Integer)
   end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--*****************************************************************************AI_ATC VALIDATE FLIGHTGROUP**********************************************************************--
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function AI_ATC:ValidateFlightGroups()
+
+  local function TableIsEmpty(t)
+    if not t then
+      return true
+    end
+    for _, _ in pairs(t) do
+      return false
+    end
+    return true
+  end
+  
+  for groupName, groupTable in pairs(AI_ATC.FlightGroup) do
+    local hostExists = false
+    local hostGroup = GROUP:FindByName(groupName)
+    
+    if hostGroup then
+      local hostUnit = hostGroup:GetUnit(1)
+      if hostUnit and hostUnit:IsAlive() then
+        hostExists = true
+      end
+    end
+    
+    if not hostExists then
+
+      for initiatorAlias, _ in pairs(groupTable) do
+        env.info(string.format("AI_ATC:ValidateFlightGroups -> Host '%s' no longer exists, removing initiator '%s'", groupName, initiatorAlias))
+      end
+      AI_ATC.FlightGroup[groupName] = nil
+    else
+
+      for initiatorAlias, data in pairs(groupTable) do
+        local playerGroup = data.PlayerGroup
+        local playerUnit = nil
+        
+        if playerGroup and playerGroup:IsAlive() then
+          playerUnit = playerGroup:GetUnit(1)
+        end
+        
+        if not playerGroup or not playerGroup:IsAlive() or not playerUnit or not playerUnit:IsAlive() then
+          env.info(string.format("AI_ATC:ValidateFlightGroups -> Initiator '%s' no longer valid, removing from group '%s'", initiatorAlias, groupName))
+          groupTable[initiatorAlias] = nil
+        end
+      end
+      
+
+      if TableIsEmpty(groupTable) then
+        AI_ATC.FlightGroup[groupName] = nil
+        env.info(string.format("AI_ATC:ValidateFlightGroups -> Flight group '%s' is now empty, removing", groupName))
+      end
+    end
+  end
+end
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --*********************************************************************************AI_ATC JOIN GROUP MENU***********************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:JoinGroup(Alias)
   local ClientData = ATM.ClientData[Alias]
   if not ClientData then return end
-
   local Unit = ClientData.Unit
   if not Unit or not Unit:IsAlive() then
     return
   end
-
   local Group = Unit:GetGroup()
   if not Group then
     return
   end
-
   local GroupMenu = ClientData.JoinGroupMenu
   if not GroupMenu then
     return
   end
   
   local SchedulerObject
-
   SchedulerObject = SCHEDULER:New(nil, function()
     if not ATM.ClientData[Alias] or not Unit or not Unit:IsAlive() then
       SchedulerObject:Stop()
@@ -7346,7 +7414,7 @@ function AI_ATC:JoinGroup(Alias)
     
       for alias, data in pairs(ATM.ClientData) do
         local clientAlias = alias
-        if clientAlias~= Alias then
+        if clientAlias ~= Alias then
           local UnitObject = data.Unit
           if UnitObject then
             local coord = UnitObject:GetCoordinate()
@@ -7359,16 +7427,47 @@ function AI_ATC:JoinGroup(Alias)
       table.sort(ClientTbl, function(a, b)
         return a.Distance < b.Distance
       end)
-
+      
       local maxItems = math.min(10, #ClientTbl)
       for i = 1, maxItems do
         local data = ClientTbl[i]
         local ClientName = data.Name
-        MENU_GROUP_COMMAND:New(Group, ClientName, GroupMenu, function() AI_ATC:AddPlayerToGroup(ClientName, Alias) end, Group)
+
+        local isInYourGroup = AI_ATC.FlightGroup[Alias] and AI_ATC.FlightGroup[Alias][ClientName]
+        
+        if GroupMenu and ATM.ClientData[ClientName] and not isInYourGroup then
+          MENU_GROUP_COMMAND:New(Group, ClientName, GroupMenu, function()
+            
+            local HostGroup = GROUP:FindByName(ClientName)
+            if not HostGroup then
+              env.info(("AI_ATC:AddPlayerToGroup -> Group not found '%s'."):format(ClientName))
+              return
+            end
+          
+            local clientData = ATM.ClientData[Alias]
+            if not clientData then
+              env.info(("AI_ATC:AddPlayerToGroup -> No ClientData found for '%s'."):format(Alias))
+              return
+            end
+          
+            local PlayerGroup = clientData.Group or (clientData.Unit and clientData.Unit:GetGroup())
+            if not PlayerGroup then
+              env.info(("AI_ATC:AddPlayerToGroup -> No group for player '%s'."):format(Alias))
+              return
+            end
+            
+            if AI_ATC.FlightGroup[Alias] and AI_ATC.FlightGroup[Alias][ClientName] then
+              env.info(("AI_ATC:AddPlayerToGroup -> Unable to Join group %s, Client is already in YOUR group '%s'."):format(ClientName, Alias))
+              return
+            end
+            
+            AI_ATC:AddPlayerToGroup(ClientName, Alias) 
+            SchedulerObject:Stop()
+            SchedulerObject = nil
+          end, Group)
+        end
       end
-
   end,{}, 0.5, 60)
-
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --***************************************************************************AI_ATC SET GROUP************************************************************************************--
@@ -7392,12 +7491,8 @@ function AI_ATC:AddPlayerToGroup(GroupName, PlayerAlias)
     return
   end
 
-  local Unit       = clientData.Unit
-  local ParentMenu = clientData.ParentMenu
-  AI_ATC:TerminateSchedules(PlayerAlias)
-  if ParentMenu and ParentMenu.RemoveSubMenus then
-    ParentMenu:RemoveSubMenus()
-  end
+  local Unit = clientData.Unit
+  AI_ATC:RemoveMenus(PlayerAlias)
   AI_ATC:SeperateFromGroup(PlayerAlias)
 
   if Unit and Unit:IsAlive() then
@@ -7675,6 +7770,7 @@ function AI_ATC:InitClients()
   end
   
   local function LogClients()
+    AI_ATC:ValidateFlightGroups()
     local activeClients = {}
     ATC_CLIENTS:ForEachClient(function(clientObject)
       if not clientObject then
@@ -11445,6 +11541,13 @@ function AI_ATC:TakeoffClearance(Alias, Climb, Audio)
         ATM.GroundControl[Alias].TakeOffClearance = true
         ClientData.TakeoffClearance = true
       end
+      
+      if not ATM.TowerControl[Alias] then
+        ATM.TowerControl[Alias] = {RequestedApproach = "Straight in", State = "On Departure", Type = Type, Contacts = {}, Schedules = {}, Count = ClientCount }
+      else
+        ATM.TowerControl[Alias].RequestedApproach = "Straight in"
+        ATM.TowerControl[Alias].State = "On Departure"
+      end
         
       SchedulerObject = SCHEDULER:New(nil, function()
         Count = Count + 1
@@ -11925,6 +12028,13 @@ function AI_ATC:RadarTerminate(Alias, Audio)
       AI_ATC:ApproachSubMenu(Alias)
     end
     Instruction = Audiofile.instruction
+  end
+  
+  if ATM.TowerControl[Alias] and ATM.TowerControl[Alias].Schedules then
+    for _, sched in ipairs(ATM.TowerControl[Alias].Schedules) do
+      sched:Stop()
+    end
+    ATM.TowerControl[Alias] = nil
   end
 
   SCHEDULER:New(nil, function()
@@ -19087,7 +19197,7 @@ end
 --*******************************************************************************START AI_ATC************************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:Start()
-  local Subtitle = "*************************************************AI_ATC(Nellis AFB) v2.9.21 HAS STARTED*****************************************************************"
+  local Subtitle = "*************************************************AI_ATC(Nellis AFB) v2.9.22 HAS STARTED*****************************************************************"
   env.info(Subtitle)
   AI_ATC:EnableCrewChief(true)
   AI_ATC:InitATIS()
