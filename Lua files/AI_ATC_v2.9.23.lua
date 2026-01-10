@@ -1278,6 +1278,76 @@ Departure_Table = {
   },
 }
 
+AI_ATC_MagDec = {
+  [1960] = 15.4,
+  [1961] = 15.4,
+  [1962] = 15.3,
+  [1963] = 15.3,
+  [1964] = 15.3,
+  [1965] = 15.2,
+  [1966] = 15.2,
+  [1967] = 15.2,
+  [1968] = 15.1,
+  [1969] = 15.1,
+  [1970] = 15.1,
+  [1971] = 15.0,
+  [1972] = 14.9,
+  [1973] = 14.8,
+  [1974] = 14.8,
+  [1975] = 14.7,
+  [1976] = 14.7,
+  [1977] = 14.6,
+  [1978] = 14.5,
+  [1979] = 14.4,
+  [1980] = 14.3,
+  [1981] = 14.2,
+  [1982] = 14.2,
+  [1983] = 14.2,
+  [1984] = 14.1,
+  [1985] = 14.2,
+  [1986] = 14.2,
+  [1987] = 14.2,
+  [1988] = 14.2,
+  [1989] = 14.2,
+  [1990] = 14.2,
+  [1991] = 13.9,
+  [1992] = 13.9,
+  [1993] = 13.8,
+  [1994] = 13.8,
+  [1995] = 13.7,
+  [1996] = 13.8,
+  [1997] = 13.8,
+  [1998] = 13.8,
+  [1999] = 13.8,
+  [2000] = 13.8,
+  [2001] = 13.4,
+  [2002] = 13.4,
+  [2003] = 13.3,
+  [2004] = 13.3,
+  [2005] = 13.2,
+  [2006] = 12.8,
+  [2007] = 12.7,
+  [2008] = 12.6,
+  [2009] = 12.5,
+  [2010] = 12.4,
+  [2011] = 12.3,
+  [2012] = 12.2,
+  [2013] = 12.1,
+  [2014] = 12.0,
+  [2015] = 11.9,
+  [2016] = 11.8,
+  [2017] = 11.7,
+  [2018] = 11.6,
+  [2019] = 11.5,
+  [2020] = 11.4,
+  [2021] = 11.4,
+  [2022] = 11.3,
+  [2023] = 11.2,
+  [2024] = 11.1,
+  [2025] = 11.0,
+  [2026] = 11.0,
+}
+
 Runway_init = 
 {
   ["dynSpawnTemplate"] = false,
@@ -3987,6 +4057,7 @@ AI_ATC_SoundFiles.Ground.Aircraft = {
   ["A-10A"] = { filename = "A10.ogg", duration = 0.430 },
   ["A-10C"] = { filename = "A10.ogg", duration = 0.430 },
   ["A-10C_2"] = { filename = "A10.ogg", duration = 0.430 },
+  ["A6E"] = { filename = "A-6.ogg", duration = 0.650 },
   ["AJS37"] = { filename = "AJS37.ogg", duration = 0.300 },
   ["AV8BNA"] = { filename = "AV8B.ogg", duration = 0.615 },
   ["B-1B"] = { filename = "B1B.ogg", duration = 0.350 },
@@ -4066,6 +4137,9 @@ AI_ATC_SoundFiles.Ground.Aircraft = {
   ["Su-34"] = { filename = "SU34.ogg", duration = 0.836 },
   ["Tornado GR4"] = { filename = "GR4.ogg", duration = 0.569 },
   ["Tornado IDS"] = { filename = "GR4.ogg", duration = 0.569 },
+  ["RQ-1A Predator"] = { filename = "UAV.ogg", duration = 0.656 },
+  ["MQ-9 Reaper"] = { filename = "UAV.ogg", duration = 0.656 },
+  ["WingLoong-I"] = { filename = "UAV.ogg", duration = 0.656 },
   ["Tu-22M3"] = { filename = "TU22.ogg", duration = 0.778 },
   ["A-4E-C"] = { filename = "A4.ogg", duration = 0.792 },
   ["T-45"] = { filename = "T45.ogg", duration = 0.923 },
@@ -4091,7 +4165,6 @@ AI_ATC_SoundFiles.Ground.Aircraft = {
   ["C-130"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["C-130J-30"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["IL-78M"] = { filename = "Heavy.ogg", duration = 0.370 },
-  ["WingLoong-I"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["E-3A"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["Tu-142"] = { filename = "Heavy.ogg", duration = 0.370 },
   ["H-6J"] = { filename = "Heavy.ogg", duration = 0.370 },
@@ -4292,6 +4365,51 @@ AI_ATC_SoundFiles.Clearance.Callsigns = {
   ["Skalpel"] = { filename = "Skalpel.ogg", duration = 0.546 },
   ["Rapier"] = { filename = "Rapier.ogg", duration = 0.441 },
   ["Pedro"] = { filename = "Pedro.ogg", duration = 0.486 },
+  ["Raygun"] = { filename = "Raygun.ogg", duration = 0.499 },
+  ["Heartless"] = { filename = "Heartless.ogg", duration = 0.644 },
+  ["Viceroy"] = { filename = "Viceroy.ogg", duration = 0.551 },
+  ["Cupcake"] = { filename = "Cupcake.ogg", duration = 0.801 },
+  ["Fighting Tiger"] = { filename = "Fighting Tiger.ogg", duration = 0.807 },
+  ["Flying Ace"] = { filename = "Flying Ace.ogg", duration = 0.749 },
+  ["Buckeye"] = { filename = "Buckeye.ogg", duration = 0.540 },
+  ["Goldplate"] = { filename = "Goldplate.ogg", duration = 0.563 },
+  ["Phoenix"] = { filename = "Phoenix.ogg", duration = 0.589 },
+  ["Electron"] = { filename = "Electron.ogg", duration = 0.598 },
+  ["Rustler"] = { filename = "Rustler.ogg", duration = 0.662 },
+  ["Vixen"] = { filename = "Vixen.ogg", duration = 0.432 },
+  ["Jackal"] = { filename = "Jackal.ogg", duration = 0.498 },
+  ["Milestone"] = { filename = "Milestone.ogg", duration = 0.624},
+  ["Simca"] = { filename = "Simca.ogg", duration = 0.508 },
+  ["Comet"] = { filename = "Comet.ogg", duration = 0.395 },
+  ["Digger"] = { filename = "Digger.ogg", duration = 0.415 },
+  ["Sabre"] = { filename = "Sabre.ogg", duration = 0.578 },
+  ["Pirate"] = { filename = "Pirate.ogg", duration = 0.511 },
+  ["Cannon"] = { filename = "Cannon.ogg", duration = 0.496 },
+  ["Buckshot"] = { filename = "Buckshot.ogg", duration = 0.610 },
+  ["Maple"] = { filename = "Maple.ogg", duration = 0.482 },
+  ["Hellcat"] = { filename = "Hellcat.ogg", duration = 0.650 },
+  ["Sundowner"] = { filename = "Sundowner.ogg", duration = 0.681 },
+  ["Camelot"] = { filename = "Camelot.ogg", duration = 0.604 },
+  ["Witchita"] = { filename = "Witchita.ogg", duration = 0.612 },
+  ["Dog"] = { filename = "Dog.ogg", duration = 0.351 },
+  ["Lion"] = { filename = "Lion.ogg", duration = 0.344 },
+  ["Tomcat"] = { filename = "Tomcat.ogg", duration = 0.575 },
+  ["Retro"] = { filename = "Retro.ogg", duration = 0.482 },
+  ["Ghostrider"] = { filename = "Ghostrider.ogg", duration = 0.752 },
+  ["Dealer"] = { filename = "Dealer.ogg", duration = 0.575 },
+  ["Dagger"] = { filename = "Dagger.ogg", duration = 0.575 },
+  ["Hammer"] = { filename = "Hammer.ogg", duration = 0.560 },
+  ["Voodoo"] = { filename = "Voodoo.ogg", duration = 0.514 },
+  ["Wildman"] = { filename = "Wildman.ogg", duration = 0.740 },
+  ["Ugly"] = { filename = "Ugly.ogg", duration = 0.525 },
+  ["Gunstar"] = { filename = "Gunstar.ogg", duration = 0.579 },
+  ["Felix"] = { filename = "Felix.ogg", duration = 0.640 },
+  ["Gypsy"] = { filename = "Gypsy.ogg", duration = 0.499 },
+  ["Black"] = { filename = "Black.ogg", duration = 0.525 },
+  ["Knight"] = { filename = "Knight.ogg", duration = 0.479 },
+  ["Black Knight"] = { filename = "Black.ogg", duration = 0.8520 },
+  ["Phantom"] = { filename = "Phantom.ogg", duration = 0.615 },
+  ["Bogey"] = { filename = "Bogey.ogg", duration = 0.505 },
 }
 
 AI_ATC_SoundFiles.RangeControl.Callsigns = {
@@ -4411,6 +4529,52 @@ AI_ATC_SoundFiles.RangeControl.Callsigns = {
   ["Skalpel"] = { filename = "Skalpel.ogg", duration = 0.566 },
   ["Rapier"] = { filename = "Rapier.ogg", duration = 0.554 },
   ["Pedro"] = { filename = "Pedro.ogg", duration = 0.485 },
+  ["Raygun"] = { filename = "Raygun.ogg", duration = 0.454 },
+  ["Heartless"] = { filename = "Heartless.ogg", duration = 0.560 },
+  ["Viceroy"] = { filename = "Viceroy.ogg", duration = 0.549 },
+  ["Cupcake"] = { filename = "Cupcake.ogg", duration = 0.615 },
+  ["Fighting Tiger"] = { filename = "Fighting_Tiger.ogg", duration = 0.864 },
+  ["Flying Ace"] = { filename = "Flying_Ace.ogg", duration = 0.828 },
+  ["Buckeye"] = { filename = "Buckeye.ogg", duration = 0.514 },
+  ["Goldplate"] = { filename = "Goldplate.ogg", duration = 0.709 },
+  ["Phoenix"] = { filename = "Phoenix.ogg", duration = 0.615 },
+  ["Electron"] = { filename = "Electron.ogg", duration = 0.774 },
+  ["Rustler"] = { filename = "Rustler.ogg", duration = 0.619 },
+  ["Vixen"] = { filename = "Vixen.ogg", duration = 0.556 },
+  ["Jackal"] = { filename = "Jackal.ogg", duration = 0.530 },
+  ["Milestone"] = { filename = "Milestone.ogg", duration = 0.633},
+  ["Simca"] = { filename = "Simca.ogg", duration = 0.508 },
+  ["Comet"] = { filename = "Comet.ogg", duration = 0.395 },
+  ["Razor"] = { filename = "Razor.ogg", duration = 0.499 },
+  ["Digger"] = { filename = "Digger.ogg", duration = 0.495 },
+  ["Sabre"] = { filename = "Sabre.ogg", duration = 0.538 },
+  ["Pirate"] = { filename = "Pirate.ogg", duration = 0.463 },
+  ["Cannon"] = { filename = "Cannon.ogg", duration = 0.493 },
+  ["Buckshot"] = { filename = "Buckshot.ogg", duration = 0.627 },
+  ["Maple"] = { filename = "Maple.ogg", duration = 0.484 },
+  ["Hellcat"] = { filename = "Hellcat.ogg", duration = 0.530 },
+  ["Sundowner"] = { filename = "Sundowner.ogg", duration = 0.709 },
+  ["Camelot"] = { filename = "Camelot.ogg", duration = 0.553 },
+  ["Witchita"] = { filename = "Witchita.ogg", duration = 0.636 },
+  ["Dog"] = { filename = "Dog.ogg", duration = 0.419 },
+  ["Lion"] = { filename = "Lion.ogg", duration = 0.482 },
+  ["Tomcat"] = { filename = "Tomcat.ogg", duration = 0.529 },
+  ["Retro"] = { filename = "Retro.ogg", duration = 0.547 },
+  ["Ghostrider"] = { filename = "Ghostrider.ogg", duration = 0.670 },
+  ["Dealer"] = { filename = "Dealer.ogg", duration = 0.511 },
+  ["Dagger"] = { filename = "Dagger.ogg", duration = 0.539 },
+  ["Hammer"] = { filename = "Hammer.ogg", duration = 0.546 },
+  ["Voodoo"] = { filename = "Voodoo.ogg", duration = 0.452 },
+  ["Wildman"] = { filename = "Wildman.ogg", duration = 0.610 },
+  ["Ugly"] = { filename = "Ugly.ogg", duration = 0.427 },
+  ["Gunstar"] = { filename = "Gunstar.ogg", duration = 0.679 },
+  ["Felix"] = { filename = "Felix.ogg", duration = 0.654 },
+  ["Gypsy"] = { filename = "Gypsy.ogg", duration = 0.552 },
+  ["Black"] = { filename = "Black.ogg", duration = 0.462 },
+  ["Knight"] = { filename = "Knight.ogg", duration = 0.482 },
+  ["Black Knight"] = { filename = "Black Knight.ogg", duration = 0.670 },
+  ["Phantom"] = { filename = "Phantom.ogg", duration = 0.502 },
+  ["Bogey"] = { filename = "Bogey.ogg", duration = 0.494 },
 }
 
 AI_ATC_SoundFiles.Ground.Callsigns = {
@@ -4518,7 +4682,52 @@ AI_ATC_SoundFiles.Ground.Callsigns = {
   ["Skalpel"] = { filename = "Skalpel.ogg", duration = 0.569 },
   ["Rapier"] = { filename = "Rapier.ogg", duration = 0.483 },
   ["Pedro"] = { filename = "Pedro.ogg", duration = 0.421 },
-  }
+  ["Raygun"] = { filename = "Raygun.ogg", duration = 0.494 },
+  ["Heartless"] = { filename = "Heartless.ogg", duration = 0.549 },
+  ["Viceroy"] = { filename = "Viceroy.ogg", duration = 0.636 },
+  ["Cupcake"] = { filename = "Cupcake.ogg", duration = 0.508 },
+  ["Fighting Tiger"] = { filename = "Fighting_Tiger.ogg", duration = 0.688 },
+  ["Flying Ace"] = { filename = "Flying_Ace.ogg", duration = 0.746 },
+  ["Buckeye"] = { filename = "Buckeye.ogg", duration = 0.451 },
+  ["Goldplate"] = { filename = "Goldplate.ogg", duration = 0.635 },
+  ["Phoenix"] = { filename = "Phoenix.ogg", duration = 0.534 },
+  ["Electron"] = { filename = "Electron.ogg", duration = 0.600 },
+  ["Rustler"] = { filename = "Rustler.ogg", duration = 0.436 },
+  ["Vixen"] = { filename = "Vixen.ogg", duration = 0.405 },
+  ["Jackal"] = { filename = "Jackal.ogg", duration = 0.449 },
+  ["Milestone"] = { filename = "Milestone.ogg", duration = 0.605},
+  ["Simca"] = { filename = "Simca.ogg", duration = 0.470 },
+  ["Comet"] = { filename = "Comet.ogg", duration = 0.427 },
+  ["Digger"] = { filename = "Digger.ogg", duration = 0.401 },
+  ["Sabre"] = { filename = "Sabre.ogg", duration = 0.474 },
+  ["Pirate"] = { filename = "Pirate.ogg", duration = 0.440 },
+  ["Cannon"] = { filename = "Cannon.ogg", duration = 0.375 },
+  ["Buckshot"] = { filename = "Buckshot.ogg", duration = 0.610 },
+  ["Maple"] = { filename = "Maple.ogg", duration = 0.410 },
+  ["Hellcat"] = { filename = "Hellcat.ogg", duration = 0.481 },
+  ["Sundowner"] = { filename = "Sundowner.ogg", duration = 0.593 },
+  ["Camelot"] = { filename = "Camelot.ogg", duration = 0.530 },
+  ["Witchita"] = { filename = "Witchita.ogg", duration = 0.533 },
+  ["Dog"] = { filename = "Dog.ogg", duration = 0.409 },
+  ["Lion"] = { filename = "Lion.ogg", duration = 0.404 },
+  ["Tomcat"] = { filename = "Tomcat.ogg", duration = 0.549 },
+  ["Retro"] = { filename = "Retro.ogg", duration = 0.480 },
+  ["Ghostrider"] = { filename = "Ghostrider.ogg", duration = 0.668 },
+  ["Dealer"] = { filename = "Dealer.ogg", duration = 0.366 },
+  ["Dagger"] = { filename = "Dagger.ogg", duration = 0.442 },
+  ["Hammer"] = { filename = "Hammer.ogg", duration = 0.392 },
+  ["Voodoo"] = { filename = "Voodoo.ogg", duration = 0.433 },
+  ["Wildman"] = { filename = "Wildman.ogg", duration = 0.623 },
+  ["Ugly"] = { filename = "Ugly.ogg", duration = 0.425 },
+  ["Gunstar"] = { filename = "Gunstar.ogg", duration = 0.573 },
+  ["Felix"] = { filename = "Felix.ogg", duration = 0.558 },
+  ["Gypsy"] = { filename = "Gypsy.ogg", duration = 0.457 },
+  ["Black"] = { filename = "Black.ogg", duration = 0.416 },
+  ["Knight"] = { filename = "Knight.ogg", duration = 0.411 },
+  ["Black Knight"] = { filename = "Black Knight.ogg", duration = 0.635 },
+  ["Phantom"] = { filename = "Phantom.ogg", duration = 0.572 },
+  ["Bogey"] = { filename = "Bogey.ogg", duration = 0.420 },
+}
   
 AI_ATC_SoundFiles.Departure.Callsigns = {
   ["Razor"] = { filename = "Razor.ogg", duration = 0.586 },
@@ -4625,6 +4834,51 @@ AI_ATC_SoundFiles.Departure.Callsigns = {
   ["Skalpel"] = { filename = "Skalpel.ogg", duration = 0.656 },
   ["Rapier"] = { filename = "Rapier.ogg", duration = 0.627 },
   ["Pedro"] = { filename = "Pedro.ogg", duration = 0.554 },
+  ["Raygun"] = { filename = "Raygun.ogg", duration = 0.539 },
+  ["Heartless"] = { filename = "Heartless.ogg", duration = 0.884 },
+  ["Viceroy"] = { filename = "Viceroy.ogg", duration = 0.569 },
+  ["Cupcake"] = { filename = "Cupcake.ogg", duration = 0.662 },
+  ["Fighting Tiger"] = { filename = "Fighting_Tiger.ogg", duration = 0.807 },
+  ["Flying Ace"] = { filename = "Flying_Ace.ogg", duration = 0.874 },
+  ["Buckeye"] = { filename = "Buckeye.ogg", duration = 0.497 },
+  ["Goldplate"] = { filename = "Goldplate.ogg", duration = 0.539 },
+  ["Phoenix"] = { filename = "Phoenix.ogg", duration = 0.635 },
+  ["Electron"] = { filename = "Electron.ogg", duration = 0.768 },
+  ["Rustler"] = { filename = "Rustler.ogg", duration = 0.646 },
+  ["Vixen"] = { filename = "Vixen.ogg", duration = 0.578 },
+  ["Jackal"] = { filename = "Jackal.ogg", duration = 0.506 },
+  ["Milestone"] = { filename = "Milestone.ogg", duration = 0.661},
+  ["Simca"] = { filename = "Simca.ogg", duration = 0.650 },
+  ["Comet"] = { filename = "Comet.ogg", duration = 0.662 },
+  ["Digger"] = { filename = "Digger.ogg", duration = 0.481 },
+  ["Sabre"] = { filename = "Sabre.ogg", duration = 0.519 },
+  ["Pirate"] = { filename = "Pirate.ogg", duration = 0.533 },
+  ["Cannon"] = { filename = "Cannon.ogg", duration = 0.541 },
+  ["Buckshot"] = { filename = "Buckshot.ogg", duration = 0.597 },
+  ["Maple"] = { filename = "Maple.ogg", duration = 0.482 },
+  ["Hellcat"] = { filename = "Hellcat.ogg", duration = 0.572 },
+  ["Sundowner"] = { filename = "Sundowner.ogg", duration = 0.737 },
+  ["Camelot"] = { filename = "Camelot.ogg", duration = 0.724 },
+  ["Witchita"] = { filename = "Witchita.ogg", duration = 0.813 },
+  ["Dog"] = { filename = "Dog.ogg", duration = 0.343 },
+  ["Lion"] = { filename = "Lion.ogg", duration = 0.550 },
+  ["Tomcat"] = { filename = "Tomcat.ogg", duration = 0.598 },
+  ["Retro"] = { filename = "Retro.ogg", duration = 0.557 },
+  ["Ghostrider"] = { filename = "Ghostrider.ogg", duration = 0.716 },
+  ["Dealer"] = { filename = "Dealer.ogg", duration = 0.467 },
+  ["Dagger"] = { filename = "Dagger.ogg", duration = 0.509 },
+  ["Hammer"] = { filename = "Hammer.ogg", duration = 0.482 },
+  ["Voodoo"] = { filename = "Voodoo.ogg", duration = 0.541 },
+  ["Wildman"] = { filename = "Wildman.ogg", duration = 0.662 },
+  ["Ugly"] = { filename = "Ugly.ogg", duration = 0.600 },
+  ["Gunstar"] = { filename = "Gunstar.ogg", duration = 0.607 },
+  ["Felix"] = { filename = "Felix.ogg", duration = 0.639 },
+  ["Gypsy"] = { filename = "Gypsy.ogg", duration = 0.563 },
+  ["Black"] = { filename = "Black.ogg", duration = 0.404 },
+  ["Knight"] = { filename = "Knight.ogg", duration = 0.351 },
+  ["Black Knight"] = { filename = "Black Knight.ogg", duration = 0.670 },
+  ["Phantom"] = { filename = "Phantom.ogg", duration = 0.766 },
+  ["Bogey"] = { filename = "Bogey.ogg", duration = 0.592 },
 }
 
 AI_ATC_NatoTime = {
@@ -5106,6 +5360,29 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:GenerateNavpoints()
   local startTime = timer.getTime()
+  local dateStr = UTILS.GetDCSMissionDate()
+  local y, m, d = dateStr:match("^(%d+)/(%d+)/(%d+)$")
+  y, m, d = tonumber(y), tonumber(m), tonumber(d)
+
+  if not (y and m and d) then
+    env.info("[AI_ATC] Mission date string '"..tostring(dateStr).."' is invalid.")
+    return
+  end
+
+  local missionNum = y * 10000 + m * 100 + d
+  
+  local function GetMagDec(year)
+    local v = (year and AI_ATC_MagDec and AI_ATC_MagDec[year]) or nil
+    if v ~= nil then
+      AI_ATC.MagDec = v
+      env.info(string.format("[AI_ATC] Mission Date (%s) MagDec set from table: %.1f", dateStr, AI_ATC.MagDec))
+    else
+      AI_ATC.MagDec = 11.0
+      env.info(string.format("[AI_ATC] Mission Date (%s) MagDec missing; using fallback: %.1f", dateStr, AI_ATC.MagDec))
+    end
+  end
+
+  GetMagDec(y)
 
   ATC_Coroutine:AddCoroutine(function()
     local batchSize = 10  
@@ -5704,15 +5981,17 @@ AI_ATC.Runways.Waypoint = AI_ATC_Navpoints["WILIE"]:GetCoordinate()
     local distanceTo03L = Coord:Get2DDistance(Reference_03L)
     local distanceTo03R = Coord:Get2DDistance(Reference_03R)
     if distanceTo03L < distanceTo03R then
-      AI_ATC.Runways.Takeoff = {"03L", true, Reference_03L}
+      AI_ATC.Runways.Takeoff = {"03L", true, Reference_03L,  40,}
+      AI_ATC.Runways.Takeoff[5] = AI_ATC:CalculateRunwayHeading(AI_ATC.Runways.Takeoff[4])
       AI_ATC.Runways.TakeoffZone = RUNWAY_03L
-      AI_ATC.Runways.Landing = {"21L", false, Reference_21L}
+      AI_ATC.Runways.Landing = {"21L", false, Reference_21L,  220,}
+      AI_ATC.Runways.Landing[5] = AI_ATC:CalculateRunwayHeading(AI_ATC.Runways.Landing[4])
       AI_ATC.Runways.LandingZone = RUNWAY_03R
       Unit:Destroy()
     else
-      AI_ATC.Runways.Takeoff = {"03R", false, Reference_03R}
+      AI_ATC.Runways.Takeoff = {"03R", false, Reference_03R,  40,}
       AI_ATC.Runways.TakeoffZone = RUNWAY_03R
-      AI_ATC.Runways.Landing = {"21R", true, Reference_21R}
+      AI_ATC.Runways.Landing = {"21R", true, Reference_21R,  220,}
       AI_ATC.Runways.LandingZone = RUNWAY_03L
       Unit:Destroy()
     end
@@ -5733,7 +6012,19 @@ AI_ATC.Runways.Waypoint = AI_ATC_Navpoints["WILIE"]:GetCoordinate()
     end
   end, {}, 1, 1)
 end, {}, 2)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--*****************************************************************************CALCULATE RUNWAY HEADING**************************************************************************--
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function AI_ATC:CalculateRunwayHeading(num)
+  if not num or not AI_ATC.MagDec then return nil end
 
+  local heading = num - AI_ATC.MagDec
+  heading = math.floor(heading + 0.5)
+  heading = heading % 360
+  if heading < 0 then heading = heading + 360 end
+  
+  return heading
+end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --****************************************************************************NELLIS ATIS***************************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -6225,38 +6516,111 @@ function AI_ATC:ClearanceSubMenu(Alias)
     end
   end, Group)
   
-
-  local Menu1 = MENU_GROUP:New(Group, "Bluefor...", CallsignMenu)
-  local Menu2 = MENU_GROUP:New(Group, "Redfor...",   CallsignMenu)
-
+  local OptionsMenu = MENU_GROUP:New(Group, "Options...", AI_ATC_Clearance_Menu)
+  local CallsignMenu = MENU_GROUP:New(Group, "Set Callsign...", OptionsMenu)
+  local Menu1 = MENU_GROUP:New(Group, "Group 1", CallsignMenu)
+  local Menu2 = MENU_GROUP:New(Group, "Group 2",   CallsignMenu)
+  local Menu3 = MENU_GROUP:New(Group, "Group 3",   CallsignMenu)
+  local Menu4 = MENU_GROUP:New(Group, "Group 4",   CallsignMenu)
+  local Menu5 = MENU_GROUP:New(Group, "Group 5",   CallsignMenu)
+  local Menu6 = MENU_GROUP:New(Group, "Group 6",   CallsignMenu)
+  local Menu7 = MENU_GROUP:New(Group, "Group 7",   CallsignMenu)
+  local Menu8 = MENU_GROUP:New(Group, "Group 8",   CallsignMenu)
+  local Menu9 = MENU_GROUP:New(Group, "Group 9",   CallsignMenu)
+  local Menu10 = MENU_GROUP:New(Group, "Set Integer",   CallsignMenu)
+  ----------------------------------------------------------------------------------------------------------------------
   if not Helo then
-    MENU_GROUP_COMMAND:New(Group, "Aspen", Menu1, function() AI_ATC:SetCallsign(Alias, "Aspen",         "11") end, Group)
+    MENU_GROUP_COMMAND:New(Group, "Aspen", Menu1, function() AI_ATC:SetCallsign(Alias, "Aspen",   "11") end, Group)
+    MENU_GROUP_COMMAND:New(Group, "Mig",   Menu2, function() AI_ATC:SetCallsign(Alias, "Mig",   "11") end, Group)
   else
-    MENU_GROUP_COMMAND:New(Group, "Pedro", Menu1, function() AI_ATC:SetCallsign(Alias, "Pedro",         "11") end, Group)
+    MENU_GROUP_COMMAND:New(Group, "Pedro", Menu1, function() AI_ATC:SetCallsign(Alias, "Pedro",   "11") end, Group)
+    MENU_GROUP_COMMAND:New(Group, "Razor", Menu2, function() AI_ATC:SetCallsign(Alias, "Razor",   "11") end, Group)
   end
-  MENU_GROUP_COMMAND:New(Group, "Chaos", Menu1, function() AI_ATC:SetCallsign(Alias, "Chaos",           "21") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Cylon", Menu1, function() AI_ATC:SetCallsign(Alias, "Cylon",           "31") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Dragon", Menu1, function() AI_ATC:SetCallsign(Alias, "Dragon",         "41") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "GunFighter", Menu1, function() AI_ATC:SetCallsign(Alias, "GunFighter", "51") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Nightmare", Menu1, function() AI_ATC:SetCallsign(Alias, "Nightmare",   "61") end, Group)
-  
+  MENU_GROUP_COMMAND:New(Group, "Chaos", Menu1, function() AI_ATC:SetCallsign(Alias, "Chaos",           "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Cylon", Menu1, function() AI_ATC:SetCallsign(Alias, "Cylon",           "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Dragon", Menu1, function() AI_ATC:SetCallsign(Alias, "Dragon",         "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "GunFighter", Menu1, function() AI_ATC:SetCallsign(Alias, "GunFighter", "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Nightmare", Menu1, function() AI_ATC:SetCallsign(Alias, "Nightmare",   "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Eagle",  Menu1, function() AI_ATC:SetCallsign(Alias, "Eagle",          "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Viper",  Menu1, function() AI_ATC:SetCallsign(Alias, "Viper",          "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Hornet", Menu1, function() AI_ATC:SetCallsign(Alias, "Hornet",         "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Slayer", Menu1, function() AI_ATC:SetCallsign(Alias, "Slayer",         "11") end, Group)
-
-  MENU_GROUP_COMMAND:New(Group, "Mig",     Menu2, function() AI_ATC:SetCallsign(Alias, "Mig",           "11") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Stalin",  Menu2, function() AI_ATC:SetCallsign(Alias, "Stalin",        "21") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Flanker", Menu2, function() AI_ATC:SetCallsign(Alias, "Flanker",       "31") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Fulcrum", Menu2, function() AI_ATC:SetCallsign(Alias, "Fulcrum",       "41") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Flogger", Menu2, function() AI_ATC:SetCallsign(Alias, "Flogger",       "51") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Ivan",    Menu2, function() AI_ATC:SetCallsign(Alias, "Ivan",          "61") end, Group)
-  
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Stalin",  Menu2, function() AI_ATC:SetCallsign(Alias, "Stalin",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Flanker", Menu2, function() AI_ATC:SetCallsign(Alias, "Flanker",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Fulcrum", Menu2, function() AI_ATC:SetCallsign(Alias, "Fulcrum",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Flogger", Menu2, function() AI_ATC:SetCallsign(Alias, "Flogger",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Ivan",    Menu2, function() AI_ATC:SetCallsign(Alias, "Ivan",          "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Grape",    Menu2, function() AI_ATC:SetCallsign(Alias, "Grape",        "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Strelka",  Menu2, function() AI_ATC:SetCallsign(Alias, "Strelka",      "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Skalpel",  Menu2, function() AI_ATC:SetCallsign(Alias, "Skalpel",      "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Rapier",   Menu2, function() AI_ATC:SetCallsign(Alias, "Rapier",       "11") end, Group)
-
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Sniper",  Menu3, function() AI_ATC:SetCallsign(Alias, "Sniper",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Rage",  Menu3, function() AI_ATC:SetCallsign(Alias, "Rage",            "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Venom", Menu3, function() AI_ATC:SetCallsign(Alias, "Venom",           "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Jedi", Menu3, function() AI_ATC:SetCallsign(Alias, "Jedi",             "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Sting", Menu3, function() AI_ATC:SetCallsign(Alias, "Sting",           "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Snake",    Menu3, function() AI_ATC:SetCallsign(Alias, "Snake",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Heavy",    Menu3, function() AI_ATC:SetCallsign(Alias, "Heavy",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Raygun",  Menu3, function() AI_ATC:SetCallsign(Alias, "Raygun",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Cupcake",  Menu3, function() AI_ATC:SetCallsign(Alias, "Cupcake",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Hawk",   Menu3, function() AI_ATC:SetCallsign(Alias, "Hawk",           "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Simca",      Menu4, function() AI_ATC:SetCallsign(Alias, "Simca",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Comet",      Menu4, function() AI_ATC:SetCallsign(Alias, "Comet",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Razor",      Menu4, function() AI_ATC:SetCallsign(Alias, "Razor",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Digger",     Menu4, function() AI_ATC:SetCallsign(Alias, "Digger",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Sabre",      Menu4, function() AI_ATC:SetCallsign(Alias, "Sabre",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Pirate",     Menu4, function() AI_ATC:SetCallsign(Alias, "Pirate",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Cannon",     Menu4, function() AI_ATC:SetCallsign(Alias, "Cannon",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Buckshot",   Menu4, function() AI_ATC:SetCallsign(Alias, "Buckshot",   "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Maple",      Menu4, function() AI_ATC:SetCallsign(Alias, "Maple",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Hellcat",    Menu4, function() AI_ATC:SetCallsign(Alias, "Hellcat",    "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Sundowner",  Menu5, function() AI_ATC:SetCallsign(Alias, "Sundowner",  "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Camelot",    Menu5, function() AI_ATC:SetCallsign(Alias, "Camelot",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Witchita",   Menu5, function() AI_ATC:SetCallsign(Alias, "Witchita",   "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Dog",         Menu5, function() AI_ATC:SetCallsign(Alias, "Dog",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Lion",        Menu5, function() AI_ATC:SetCallsign(Alias, "Lion",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Tomcat",      Menu5, function() AI_ATC:SetCallsign(Alias, "Tomcat",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Retro",       Menu5, function() AI_ATC:SetCallsign(Alias, "Retro",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Ghostrider",  Menu5, function() AI_ATC:SetCallsign(Alias, "Ghostrider","11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Dealer",      Menu5, function() AI_ATC:SetCallsign(Alias, "Dealer",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Dagger",      Menu5, function() AI_ATC:SetCallsign(Alias, "Dagger",    "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Hammer",     Menu6, function() AI_ATC:SetCallsign(Alias, "Hammer",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Voodoo",     Menu6, function() AI_ATC:SetCallsign(Alias, "Voodoo",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Wildman",    Menu6, function() AI_ATC:SetCallsign(Alias, "Wildman",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Ugly",       Menu6, function() AI_ATC:SetCallsign(Alias, "Ugly",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Gunstar",    Menu6, function() AI_ATC:SetCallsign(Alias, "Gunstar",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Felix",       Menu6, function() AI_ATC:SetCallsign(Alias, "Felix",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Gypsy",       Menu6, function() AI_ATC:SetCallsign(Alias, "Gypsy",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Black",       Menu6, function() AI_ATC:SetCallsign(Alias, "Black",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Knight",      Menu6, function() AI_ATC:SetCallsign(Alias, "Knight",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Black Knight",Menu6, function()AI_ATC:SetCallsign(Alias, "Black Knight","11")end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Phantom",   Menu7, function() AI_ATC:SetCallsign(Alias, "Phantom", "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Bogey",       Menu7, function() AI_ATC:SetCallsign(Alias, "Bogey", "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Wolf",     Menu7, function() AI_ATC:SetCallsign(Alias, "Wolf",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Vixen",    Menu7, function() AI_ATC:SetCallsign(Alias, "Vixen",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Cargo",    Menu7, function() AI_ATC:SetCallsign(Alias, "Cargo",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Warrior",  Menu7, function() AI_ATC:SetCallsign(Alias, "Warrior",  "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Anvil",    Menu7, function() AI_ATC:SetCallsign(Alias, "Anvil",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Apache",   Menu7, function() AI_ATC:SetCallsign(Alias, "Apache",   "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Hawg",     Menu7, function() AI_ATC:SetCallsign(Alias, "Hawg",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Boar",     Menu7, function() AI_ATC:SetCallsign(Alias, "Boar",     "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "1",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "2",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "21") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "3",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "31") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "4",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "41") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "5",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "51") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "6",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "61") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "7",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "71") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "8",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "81") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "9",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "91") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "0",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "01") end, Group)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --***************************************************************************CLEARANCE READBACK SUBMENU**************************************************************************--
@@ -6284,36 +6648,111 @@ function AI_ATC:ReadBackSubMenu(Alias)
   MENU_GROUP_COMMAND:New(Group, "Squawk 6001",   AI_ATC_Readback_Menu, function() AI_ATC:ClearanceReadBack(Alias, "6001") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Squawk 7001",   AI_ATC_Readback_Menu, function() AI_ATC:ClearanceReadBack(Alias, "7001") end, Group)
   
-  local Menu1 = MENU_GROUP:New(Group, "Bluefor...", CallsignMenu)
-  local Menu2 = MENU_GROUP:New(Group, "Redfor...",   CallsignMenu)
-
+  local OptionsMenu = MENU_GROUP:New(Group, "Options...", AI_ATC_Clearance_Menu)
+  local CallsignMenu = MENU_GROUP:New(Group, "Set Callsign...", OptionsMenu)
+  local Menu1 = MENU_GROUP:New(Group, "Group 1", CallsignMenu)
+  local Menu2 = MENU_GROUP:New(Group, "Group 2",   CallsignMenu)
+  local Menu3 = MENU_GROUP:New(Group, "Group 3",   CallsignMenu)
+  local Menu4 = MENU_GROUP:New(Group, "Group 4",   CallsignMenu)
+  local Menu5 = MENU_GROUP:New(Group, "Group 5",   CallsignMenu)
+  local Menu6 = MENU_GROUP:New(Group, "Group 6",   CallsignMenu)
+  local Menu7 = MENU_GROUP:New(Group, "Group 7",   CallsignMenu)
+  local Menu8 = MENU_GROUP:New(Group, "Group 8",   CallsignMenu)
+  local Menu9 = MENU_GROUP:New(Group, "Group 9",   CallsignMenu)
+  local Menu10 = MENU_GROUP:New(Group, "Set Integer",   CallsignMenu)
+  ----------------------------------------------------------------------------------------------------------------------
   if not Helo then
-    MENU_GROUP_COMMAND:New(Group, "Aspen", Menu1, function() AI_ATC:SetCallsign(Alias, "Aspen",         "11") end, Group)
+    MENU_GROUP_COMMAND:New(Group, "Aspen", Menu1, function() AI_ATC:SetCallsign(Alias, "Aspen",   "11") end, Group)
+    MENU_GROUP_COMMAND:New(Group, "Mig",   Menu2, function() AI_ATC:SetCallsign(Alias, "Mig",   "11") end, Group)
   else
-    MENU_GROUP_COMMAND:New(Group, "Pedro", Menu1, function() AI_ATC:SetCallsign(Alias, "Pedro",         "11") end, Group)
+    MENU_GROUP_COMMAND:New(Group, "Pedro", Menu1, function() AI_ATC:SetCallsign(Alias, "Pedro",   "11") end, Group)
+    MENU_GROUP_COMMAND:New(Group, "Razor", Menu2, function() AI_ATC:SetCallsign(Alias, "Razor",   "11") end, Group)
   end
-  MENU_GROUP_COMMAND:New(Group, "Chaos", Menu1, function() AI_ATC:SetCallsign(Alias, "Chaos",           "21") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Cylon", Menu1, function() AI_ATC:SetCallsign(Alias, "Cylon",           "31") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Dragon", Menu1, function() AI_ATC:SetCallsign(Alias, "Dragon",         "41") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "GunFighter", Menu1, function() AI_ATC:SetCallsign(Alias, "GunFighter", "51") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Nightmare", Menu1, function() AI_ATC:SetCallsign(Alias, "Nightmare",   "61") end, Group)
-  
+  MENU_GROUP_COMMAND:New(Group, "Chaos", Menu1, function() AI_ATC:SetCallsign(Alias, "Chaos",           "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Cylon", Menu1, function() AI_ATC:SetCallsign(Alias, "Cylon",           "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Dragon", Menu1, function() AI_ATC:SetCallsign(Alias, "Dragon",         "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "GunFighter", Menu1, function() AI_ATC:SetCallsign(Alias, "GunFighter", "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Nightmare", Menu1, function() AI_ATC:SetCallsign(Alias, "Nightmare",   "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Eagle",  Menu1, function() AI_ATC:SetCallsign(Alias, "Eagle",          "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Viper",  Menu1, function() AI_ATC:SetCallsign(Alias, "Viper",          "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Hornet", Menu1, function() AI_ATC:SetCallsign(Alias, "Hornet",         "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Slayer", Menu1, function() AI_ATC:SetCallsign(Alias, "Slayer",         "11") end, Group)
-
-  MENU_GROUP_COMMAND:New(Group, "Mig",     Menu2, function() AI_ATC:SetCallsign(Alias, "Mig",           "11") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Stalin",  Menu2, function() AI_ATC:SetCallsign(Alias, "Stalin",        "21") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Flanker", Menu2, function() AI_ATC:SetCallsign(Alias, "Flanker",       "31") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Fulcrum", Menu2, function() AI_ATC:SetCallsign(Alias, "Fulcrum",       "41") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Flogger", Menu2, function() AI_ATC:SetCallsign(Alias, "Flogger",       "51") end, Group)
-  MENU_GROUP_COMMAND:New(Group, "Ivan",    Menu2, function() AI_ATC:SetCallsign(Alias, "Ivan",          "61") end, Group)
-  
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Stalin",  Menu2, function() AI_ATC:SetCallsign(Alias, "Stalin",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Flanker", Menu2, function() AI_ATC:SetCallsign(Alias, "Flanker",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Fulcrum", Menu2, function() AI_ATC:SetCallsign(Alias, "Fulcrum",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Flogger", Menu2, function() AI_ATC:SetCallsign(Alias, "Flogger",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Ivan",    Menu2, function() AI_ATC:SetCallsign(Alias, "Ivan",          "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Grape",    Menu2, function() AI_ATC:SetCallsign(Alias, "Grape",        "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Strelka",  Menu2, function() AI_ATC:SetCallsign(Alias, "Strelka",      "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Skalpel",  Menu2, function() AI_ATC:SetCallsign(Alias, "Skalpel",      "11") end, Group)
   MENU_GROUP_COMMAND:New(Group, "Rapier",   Menu2, function() AI_ATC:SetCallsign(Alias, "Rapier",       "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Sniper",  Menu3, function() AI_ATC:SetCallsign(Alias, "Sniper",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Rage",  Menu3, function() AI_ATC:SetCallsign(Alias, "Rage",            "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Venom", Menu3, function() AI_ATC:SetCallsign(Alias, "Venom",           "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Jedi", Menu3, function() AI_ATC:SetCallsign(Alias, "Jedi",             "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Sting", Menu3, function() AI_ATC:SetCallsign(Alias, "Sting",           "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Snake",    Menu3, function() AI_ATC:SetCallsign(Alias, "Snake",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Heavy",    Menu3, function() AI_ATC:SetCallsign(Alias, "Heavy",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Raygun",  Menu3, function() AI_ATC:SetCallsign(Alias, "Raygun",        "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Cupcake",  Menu3, function() AI_ATC:SetCallsign(Alias, "Cupcake",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Hawk",   Menu3, function() AI_ATC:SetCallsign(Alias, "Hawk",           "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Simca",      Menu4, function() AI_ATC:SetCallsign(Alias, "Simca",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Comet",      Menu4, function() AI_ATC:SetCallsign(Alias, "Comet",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Razor",      Menu4, function() AI_ATC:SetCallsign(Alias, "Razor",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Digger",     Menu4, function() AI_ATC:SetCallsign(Alias, "Digger",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Sabre",      Menu4, function() AI_ATC:SetCallsign(Alias, "Sabre",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Pirate",     Menu4, function() AI_ATC:SetCallsign(Alias, "Pirate",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Cannon",     Menu4, function() AI_ATC:SetCallsign(Alias, "Cannon",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Buckshot",   Menu4, function() AI_ATC:SetCallsign(Alias, "Buckshot",   "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Maple",      Menu4, function() AI_ATC:SetCallsign(Alias, "Maple",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Hellcat",    Menu4, function() AI_ATC:SetCallsign(Alias, "Hellcat",    "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Sundowner",  Menu5, function() AI_ATC:SetCallsign(Alias, "Sundowner",  "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Camelot",    Menu5, function() AI_ATC:SetCallsign(Alias, "Camelot",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Witchita",   Menu5, function() AI_ATC:SetCallsign(Alias, "Witchita",   "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Dog",         Menu5, function() AI_ATC:SetCallsign(Alias, "Dog",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Lion",        Menu5, function() AI_ATC:SetCallsign(Alias, "Lion",      "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Tomcat",      Menu5, function() AI_ATC:SetCallsign(Alias, "Tomcat",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Retro",       Menu5, function() AI_ATC:SetCallsign(Alias, "Retro",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Ghostrider",  Menu5, function() AI_ATC:SetCallsign(Alias, "Ghostrider","11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Dealer",      Menu5, function() AI_ATC:SetCallsign(Alias, "Dealer",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Dagger",      Menu5, function() AI_ATC:SetCallsign(Alias, "Dagger",    "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Hammer",     Menu6, function() AI_ATC:SetCallsign(Alias, "Hammer",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Voodoo",     Menu6, function() AI_ATC:SetCallsign(Alias, "Voodoo",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Wildman",    Menu6, function() AI_ATC:SetCallsign(Alias, "Wildman",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Ugly",       Menu6, function() AI_ATC:SetCallsign(Alias, "Ugly",       "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Gunstar",    Menu6, function() AI_ATC:SetCallsign(Alias, "Gunstar",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Felix",       Menu6, function() AI_ATC:SetCallsign(Alias, "Felix",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Gypsy",       Menu6, function() AI_ATC:SetCallsign(Alias, "Gypsy",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Black",       Menu6, function() AI_ATC:SetCallsign(Alias, "Black",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Knight",      Menu6, function() AI_ATC:SetCallsign(Alias, "Knight",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Black Knight",Menu6, function()AI_ATC:SetCallsign(Alias, "Black Knight","11")end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "Phantom",   Menu7, function() AI_ATC:SetCallsign(Alias, "Phantom", "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Bogey",       Menu7, function() AI_ATC:SetCallsign(Alias, "Bogey", "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Wolf",     Menu7, function() AI_ATC:SetCallsign(Alias, "Wolf",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Vixen",    Menu7, function() AI_ATC:SetCallsign(Alias, "Vixen",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Cargo",    Menu7, function() AI_ATC:SetCallsign(Alias, "Cargo",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Warrior",  Menu7, function() AI_ATC:SetCallsign(Alias, "Warrior",  "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Anvil",    Menu7, function() AI_ATC:SetCallsign(Alias, "Anvil",    "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Apache",   Menu7, function() AI_ATC:SetCallsign(Alias, "Apache",   "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Hawg",     Menu7, function() AI_ATC:SetCallsign(Alias, "Hawg",     "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "Boar",     Menu7, function() AI_ATC:SetCallsign(Alias, "Boar",     "11") end, Group)
+  ----------------------------------------------------------------------------------------------------------------------
+  MENU_GROUP_COMMAND:New(Group, "1",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "11") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "2",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "21") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "3",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "31") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "4",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "41") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "5",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "51") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "6",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "61") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "7",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "71") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "8",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "81") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "9",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "91") end, Group)
+  MENU_GROUP_COMMAND:New(Group, "0",   Menu10, function() AI_ATC:SetCallsign(Alias, nil, "01") end, Group)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --***********************************************************************************CLEARANCE SUB MENU**************************************************************************--
@@ -7297,25 +7736,54 @@ end
 --***************************************************************************AI_ATC SET CALLSIGN*********************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:SetCallsign(Alias, Callsign, Integer)
+  AI_ATC.CustomCallsigns[Alias] = AI_ATC.CustomCallsigns[Alias] or {}
+
+  local ClientObject = ATM.ClientData[Alias]
+  if not ClientObject then return end
+
+  local CurrentCallsign = ClientObject.Callsign or ""
+
+  if Integer ~= nil then
+    Integer = tostring(Integer)
+  end
+
+  local function splitAtFirstNumeric(str)
+    local position = string.find(str, "%d")
+    if position then
+      local prefix = string.sub(str, 1, position - 1)
+      return prefix
+    else
+      return str
+    end
+  end
+
   local NewCallsign
-  AI_ATC.CustomCallsigns[Alias] = {}
-  if Integer then 
-    NewCallsign = Callsign..Integer
+
+  if not Callsign and Integer then
+    CurrentCallsign = string.gsub(CurrentCallsign, "-", "")
+    local prefix = splitAtFirstNumeric(CurrentCallsign)
+    NewCallsign = prefix .. Integer
+
+  elseif Callsign and Integer then
+    Callsign = string.gsub(Callsign, "-", "")
+    NewCallsign = Callsign .. Integer
+
+  elseif Callsign and not Integer then
+    Callsign = string.gsub(Callsign, "-", "")
+    NewCallsign = Callsign .. "11"
+
   else
-    NewCallsign = Callsign.."11"
+    NewCallsign = CurrentCallsign
   end
-  
-  if AI_Instructor and AI_Instructor.Active then
-    local FlightLeadCallsign = NewCallsign:sub(1, -2) .. "2"
-    AI_Instructor.Callsign = FlightLeadCallsign
-    NewCallsign = NewCallsign:sub(1, -2) .. "2"
-  end
-  
+
   AI_ATC.CustomCallsigns[Alias].Callsign = NewCallsign
   env.info(string.format("Registering unique Callsign %s for %s", NewCallsign, Alias))
+
   if ATM.ClientData[Alias] then
     local Unit = ATM.ClientData[Alias].Unit
-    USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
+    if Unit then
+      USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
+    end
     ATM.ClientData[Alias].Callsign = NewCallsign
     AI_ATC:UpdateFlightCallsign(Alias)
   end
@@ -8229,9 +8697,20 @@ function AI_ATC:TowerController(Debug)
   local function CheckLandingType(Alias)
     local LandingType = "Straight in"
     local GroupObj = GROUP:FindByName(Alias)
+    if not GroupObj then 
+      return LandingType 
+    end
+    
     local DCSObj = GroupObj:GetTemplate()
-    if not DCSObj then return end
+    if not DCSObj then 
+      return LandingType 
+    end
+    
     local Route = DCSObj.route
+    if not Route or not Route.points then
+      return LandingType
+    end
+    
     for i = 1, #Route.points do
       local wp = Route.points[i]
       if wp.task then
@@ -8246,7 +8725,20 @@ function AI_ATC:TowerController(Debug)
                 local p = act.params
                 if p.name == 36 and p.value == 3 then
                   LandingType = "Overhead"
-                  break
+                  return LandingType
+                end
+              end
+            end
+            if t and t.id == "ControlledTask" and t.params and t.params.task then
+              local nestedTask = t.params.task
+              if nestedTask.id == "WrappedAction" and nestedTask.params and nestedTask.params.action then
+                local act = nestedTask.params.action
+                if act.id == "Option" and act.params then
+                  local p = act.params
+                  if p.name == 36 and p.value == 3 then
+                    LandingType = "Overhead"
+                    return LandingType
+                  end
                 end
               end
             end
@@ -8254,15 +8746,15 @@ function AI_ATC:TowerController(Debug)
         end
       end
     end
+
     return LandingType
   end
   
-  
   SCHEDULER:New(nil, function()
     local Runway = AI_ATC.Runways.Landing[1]
+    local RunwayHeading = AI_ATC.Runways.Landing[5]
     local TowerRadar = SET_GROUP:New():FilterZones({TowerZone}):FilterCategoryAirplane():FilterCategoryHelicopter():FilterActive(true):FilterOnce()
-    local RunwayHeading = 209
-    
+
     local function CheckFlightGroups()
       for groupName, groupTable in pairs(AI_ATC.FlightGroup) do
         for ClientName, _ in pairs(groupTable) do
@@ -9125,7 +9617,7 @@ end
 --***********************************************************************************ATC EXTRACT RUNWAY HEADING******************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:ExtractRunwayHeading(runway)
-  local MagDec = UTILS.GetMagneticDeclination(UTILS.GetDCSMap())
+  local MagDec = AI_ATC.MagDec
   local heading = tonumber(runway:sub(1, 2)) * 10
   return heading + MagDec
 end
@@ -9181,13 +9673,23 @@ end
 --*****************************************************************************ATC MAGNETIC HEADING*******************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:CorrectHeading(heading)
-  local MagDec = UTILS.GetMagneticDeclination(UTILS.GetDCSMap())
-  local Heading = math.floor(heading)
-  Heading = (Heading - MagDec) % 360
-  if Heading < 0 then Heading = Heading + 360 end
+  local MagDec = AI_ATC.MagDec
   
-  return tostring(Heading)
-  
+  local correctedHeading = (heading - MagDec) % 360
+
+  if correctedHeading < 0 then
+    correctedHeading = correctedHeading + 360
+  end
+
+  local decimal = correctedHeading - math.floor(correctedHeading)
+
+  if decimal >= 0.5 then
+    correctedHeading = math.floor(correctedHeading + 0.5)
+  else
+    correctedHeading = math.floor(correctedHeading)
+  end
+
+  return tostring(correctedHeading)
 end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --****************************************************************************ATC TRAFFIC CARDINAL*******************************************************************************--
@@ -10232,7 +10734,7 @@ function AI_ATC:Vector(Alias, String)
     end
     UnitCoord = Unit:GetCoordinate()
     Refuelable, TankerType = Unit:IsRefuelable()
-    MagDec = UTILS.GetMagneticDeclination(UTILS.GetDCSMap())
+    MagDec = AI_ATC.MagDec
     if Gates[String] then
       Destination = AI_ATC_Navpoints[Gates[String]]:GetCoordinate()
     elseif AI_ATC_Navpoints[String] then
@@ -10842,7 +11344,7 @@ function AI_ATC:EngineStart(Alias, Audio)
   local CallsignSub = Flight and FlightCallsign or Callsign
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:EngineStart(Alias, true) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:EngineStart(Alias, Audio) end, Transmitter)==false then
     return
   end
   
@@ -10928,7 +11430,7 @@ function AI_ATC:HeloTaxi(Alias, Audio)
   local CallsignSub = Flight and FlightCallsign or Callsign
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:HeloTaxi(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:HeloTaxi(Alias, Audio) end, Transmitter)==false then
     return
   end
   
@@ -11198,7 +11700,7 @@ function AI_ATC:CrossRunway(Alias, Audio)
   local SchedulerObjects = ClientData.SchedulerObjects or {}
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
 
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:CrossRunway(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:CrossRunway(Alias, Audio) end, Transmitter)==false then
     return
   end
   
@@ -11424,7 +11926,7 @@ function AI_ATC:TakeoffFromParking(Alias)
   
   local Instruction, Coord, Height, WindDirection, WindSpeed
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:TakePad(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:TakeoffFromParking(Alias) end, Transmitter)==false then
     return
   end
   
@@ -11633,7 +12135,7 @@ function AI_ATC:DepartureIdent(Alias, Audio)
   local CallsignSub = Flight and FlightCallsign or Callsign
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:DepartureIdent(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:DepartureIdent(Alias, Audio) end, Transmitter)==false then
     return
   end
   
@@ -11690,7 +12192,7 @@ function AI_ATC:VFRDeparture(Alias, Audio)
   local CallsignSub = Flight and FlightCallsign or Callsign
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:VFRDeparture(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:VFRDeparture(Alias, Audio) end, Transmitter)==false then
     return
   end
   
@@ -11992,7 +12494,7 @@ function AI_ATC:RadarTerminate(Alias, Audio)
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
   local Audiofile, Instruction
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:RadarTerminate(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:RadarTerminate(Alias, Audio) end, Transmitter)==false then
     return
   end
   
@@ -12171,7 +12673,7 @@ function AI_ATC:RangeCheckIn(Alias, String, Audio)
   local SchedulerObjects = ClientData.SchedulerObjects
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
 
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:RangeCheckIn(Alias, String) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:RangeCheckIn(Alias, String, Audio) end, Transmitter)==false then
     return
   end
   AI_ATC:ClearInstruction(Alias)
@@ -12730,7 +13232,7 @@ function AI_ATC:VFRApproach(Alias, Modifier)
   local RadioObject = AI_ATC:FindTransmitter(Alias, Transmitter)
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:VFRApproach(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:VFRApproach(Alias, Modifier) end, Transmitter)==false then
     return
   end
   AI_ATC:ResetMenus(Alias)
@@ -12831,7 +13333,7 @@ function AI_ATC:IFRApproach(Alias, Modifier)
   local CallsignSub = Flight and FlightCallsign or Callsign
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:IFRApproach(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:IFRApproach(Alias, Modifier) end, Transmitter)==false then
     return
   end
 
@@ -12956,7 +13458,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --***************************************************************************GENERIC APPROACH************************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function AI_ATC:GenericApproach(Alias, audio)
+function AI_ATC:GenericApproach(Alias)
   local Transmitter = "Approach"
   local Airbase = AI_ATC.Airbase
   local Title = string.format("%s %s", Airbase, Transmitter)
@@ -13526,6 +14028,7 @@ function AI_ATC:ApproachLocalizer(Alias, Type)
   local Airbase = AI_ATC.Airbase
   local LSVTCN = AI_ATC_Navpoints.LSVTCN:GetCoordinate()
   local Runway = AI_ATC.Runways.Landing[1]
+  local RunwayHeading = AI_ATC.Runways.Landing[5]
   local Delay = 1.5 + math.random() * (2.5 - 1.5)
   
   local  Recovery, LocaliserRange, LocalizerAngle
@@ -13578,7 +14081,7 @@ function AI_ATC:ApproachLocalizer(Alias, Type)
     
     local offsetHeading
     if not desiredHeading then
-      local LOCALISER = 209
+      local LOCALISER = RunwayHeading
       local vectorHeading = AI_ATC:CorrectHeading(UnitCoord:HeadingTo(LSVTCN))
       local vectorCalc = normalizeAngle(LOCALISER - vectorHeading)
   
@@ -13609,9 +14112,9 @@ function AI_ATC:ApproachLocalizer(Alias, Type)
   local function FinalController()
     RadioObject = AI_ATC:FindTransmitter(Alias, Transmitter)
     local UnitCoord = Unit:GetCoordinate()
-    Turn, Heading = CalculateTurnDirection(Unit, 209)
+    Turn, Heading = CalculateTurnDirection(Unit, RunwayHeading)
     AudioFile = TurnTable[Turn]
-    TurnSub = string.format("Turn %s heading 209", Turn)
+    TurnSub = string.format("Turn %s heading %s", Turn, RunwayHeading)
     AI_ATC:RepeatLastTransmission(Alias, function()FinalController() end)
     RadioObject = AI_ATC:FindTransmitter(Alias, Transmitter)
     AI_ATC:ChannelOpen(7, Transmitter, Alias)
@@ -13619,7 +14122,7 @@ function AI_ATC:ApproachLocalizer(Alias, Type)
     RadioObject:NewTransmission("DeadAir.ogg", 0.100, "Airbase_ATC/Ground/SoundFiles/", nil, 0.3, Subtitle, 5)
     AI_ATC:Callsign(Callsign, RadioObject, Transmitter, Flight)
     RadioObject:NewTransmission(AudioFile.filename, AudioFile.duration, "Airbase_ATC/Departure/SoundFiles/", nil, 0.1)
-    AI_ATC:ReadHeading("209", RadioObject, Transmitter)
+    AI_ATC:ReadHeading(tostring(RunwayHeading), RadioObject, Transmitter)
     RadioObject:NewTransmission("FinalController.ogg", 1.602, "Airbase_ATC/Departure/SoundFiles/", nil, 0.1)
 
     SCHEDULER:New(nil, function()
@@ -13697,7 +14200,7 @@ function AI_ATC:ApproachLocalizer(Alias, Type)
           local Coord = Unit:GetCoord()
           local Range = Coord:Get2DDistance(LSVTCN)
           local Vector = AI_ATC:CorrectHeading(Coord:HeadingTo(Localizer))
-          local Angle = AI_ATC:AngularDifference(Vector, 209)
+          local Angle = AI_ATC:AngularDifference(Vector, RunwayHeading)
           if Angle <= 3 and Range <= 35188 then
             if AI_ATC:FunctionDelay(Alias, nil, Transmitter)==true then
               FinalController()
@@ -13724,7 +14227,7 @@ function AI_ATC:ApproachLocalizer(Alias, Type)
       local Coord = Unit:GetCoord()
       local Range = Coord:Get2DDistance(LSVTCN)
       local Vector = AI_ATC:CorrectHeading(Coord:HeadingTo(LSVTCN))
-      local Angle = AI_ATC:AngularDifference(Vector, 209)
+      local Angle = AI_ATC:AngularDifference(Vector, RunwayHeading)
       if Angle <= LocalizerAngle and Range <= LocaliserRange then
         if AI_ATC:FunctionDelay(Alias, nil, Transmitter)==true then
           Execute()
@@ -13757,7 +14260,7 @@ function AI_ATC:MissedApproach(Alias, Audio)
   
   local Destination, DestCoord, Altitude, AltSub
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:MissedApproach(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:MissedApproach(Alias, Audio) end, Transmitter)==false then
     return
   end
   
@@ -13821,7 +14324,7 @@ function AI_ATC:B2RCheckIn(Alias)
   AI_ATC:BackToRadarSubMenu(Alias)
   
   USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:ApproachBackToRadar(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:B2RCheckIn(Alias) end, Transmitter)==false then
     return
   end
   
@@ -13870,7 +14373,7 @@ function AI_ATC:ApproachBackToRadar(Alias, Type)
   AI_ATC:CancelIFRSubMenu(Alias)
   USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:ApproachBackToRadar(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:ApproachBackToRadar(Alias, Type) end, Transmitter)==false then
     return
   end
 
@@ -13969,6 +14472,7 @@ function AI_ATC:RadarManager(Alias, Type, Auto)
   local RadioObject = AI_ATC:FindTransmitter(Alias, Transmitter)
   local LSVTCN = AI_ATC_Navpoints.LSVTCN:GetCoordinate()
   local Runway = AI_ATC.Runways.Landing[1]
+  local RunwayHeading = AI_ATC.Runways.Landing[5]
   local ClientObject = ATM.ClientData[Alias]
   local Unit = ClientObject.Unit
   local Group = Unit:GetGroup()
@@ -14072,7 +14576,6 @@ function AI_ATC:RadarManager(Alias, Type, Auto)
   end, {}, 0.5)
   
   local function CalculateAltitude(heading, altitude)
-    Runway = AI_ATC.Runways.Landing[1]
     Heading = heading
     Altitude = altitude
     AltSub = AI_ATC:ReadFlightLevel(Altitude, RadioObject, Transmitter, false)
@@ -14123,9 +14626,9 @@ function AI_ATC:RadarManager(Alias, Type, Auto)
   
   local function FinalController()
     local UnitCoord = Unit:GetCoordinate()
-    Turn = CalculateTurnDirection(Unit, "209")
+    Turn = CalculateTurnDirection(Unit, tostring(RunwayHeading))
     AudioFile = TurnTable[Turn]
-    TurnSub = string.format("Turn %s heading %s", Turn, "209")
+    TurnSub = string.format("Turn %s heading %s", Turn, RunwayHeading)
     AI_ATC:RepeatLastTransmission(Alias, function()FinalController() end)
     RadioObject = AI_ATC:FindTransmitter(Alias, Transmitter)
     AI_ATC:ChannelOpen(7, Transmitter, Alias)
@@ -14133,7 +14636,7 @@ function AI_ATC:RadarManager(Alias, Type, Auto)
     RadioObject:NewTransmission("DeadAir.ogg", 0.100, "Airbase_ATC/Ground/SoundFiles/", nil, 0.3, Subtitle, 5)
     AI_ATC:Callsign(Callsign, RadioObject, Transmitter, Flight)
     RadioObject:NewTransmission(AudioFile.filename, AudioFile.duration, "Airbase_ATC/Departure/SoundFiles/", nil, 0.1)
-    AI_ATC:ReadHeading("209", RadioObject, Transmitter)
+    AI_ATC:ReadHeading(tostring(RunwayHeading), RadioObject, Transmitter)
     RadioObject:NewTransmission("FinalController.ogg", 1.602, "Airbase_ATC/Departure/SoundFiles/", nil, 0.1)
     
     SCHEDULER:New(nil, function()
@@ -14184,7 +14687,7 @@ function AI_ATC:RadarManager(Alias, Type, Auto)
           local Coord = Unit:GetCoord()
           local Range = Coord:Get2DDistance(LSVTCN)
           local Vector = AI_ATC:CorrectHeading(Coord:HeadingTo(Localizer))
-          local Angle = AI_ATC:AngularDifference(Vector, 209)
+          local Angle = AI_ATC:AngularDifference(Vector, tostring(RunwayHeading))
           if Angle <= 5 and Range <= 35188 then
             if AI_ATC:FunctionDelay(Alias, nil, Transmitter)==true then
               FinalController()
@@ -15089,7 +15592,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --******************************************************************************ATC TOWER CHECKIN********************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function AI_ATC:Tower_Checkin(Alias, audio)
+function AI_ATC:Tower_Checkin(Alias)
   local Transmitter = "Tower"
   local RadioObject = TOWER_RADIO
   local RadioKey = "Ground"
@@ -15145,7 +15648,7 @@ function AI_ATC:Tower_Checkin(Alias, audio)
     WindSpeed = (tostring(math.floor(UTILS.MpsToKnots(WindSpeed)- 0.5)))
     Runway = AI_ATC.Runways.Landing[1]
     Randomizer = math.random(1, 2)
-    RunwayHeading = AI_ATC:ExtractRunwayHeading(Runway)
+    RunwayHeading = AI_ATC.Runways.Landing[5]
     RecipricolHeading = (RunwayHeading + 180) % 360 
     
     if Runway=="21L" then
@@ -15474,7 +15977,7 @@ function AI_ATC:ReportKey(Alias, Key)
     AirbaseCoord = AI_ATC_Vec3
     UnitCoord = Unit:GetCoordinate()
     InitRange = UnitCoord:Get2DDistance(AirbaseCoord)
-    RunwayHeading = AI_ATC:ExtractRunwayHeading(Runway)
+    RunwayHeading = AI_ATC.Runways.Landing[5]
     ReciprocalHeading = (RunwayHeading + 180) % 360 
     ApproachType = ClientData.Landing.Procedure
     if ApproachType == "SFO" then
@@ -15734,7 +16237,7 @@ function AI_ATC:Report5MileInitial(Alias)
     AirbaseCoord = AI_ATC_Vec3
     UnitCoord = Unit:GetCoordinate()
     InitRange = UnitCoord:Get2DDistance(AirbaseCoord)
-    RunwayHeading = AI_ATC:ExtractRunwayHeading(Runway)
+    RunwayHeading = AI_ATC.Runways.Landing[5]
     ReciprocalHeading = (RunwayHeading + 180) % 360 
     LandingType = ATM.ClientData[Alias].Landing.Type
     if Runway=="21L" then
@@ -15873,7 +16376,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --****************************************************************************ATC REPORT INITIAL*********************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function AI_ATC:ReportInitial(Alias, audio)
+function AI_ATC:ReportInitial(Alias)
   local Transmitter = "Tower"
   local RadioObject = TOWER_RADIO
   local Title = string.format("%s %s", AI_ATC.Airbase, Transmitter)
@@ -16044,7 +16547,7 @@ function AI_ATC:WingmanReportBase(Alias, LandingType, Integer)
   local Runway = AI_ATC.Runways.Landing[1]
   local Delay = math.random(1.5, 2.5)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:WingmanReportBase(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:WingmanReportBase(Alias, LandingType, Integer) end, Transmitter)==false then
     return
   end
 
@@ -16134,7 +16637,7 @@ function AI_ATC:ClosedTraffic(Alias, audio)
   AI_ATC:ReportBaseSubMenu(Alias)
   
   USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:ClosedTraffic(Alias, true) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:ClosedTraffic(Alias, audio) end, Transmitter)==false then
     return
   end
   
@@ -16865,7 +17368,7 @@ function AI_ATC:LandingManager(Alias, PAR)
     Exit = ClientData.Taxi[#ClientData.Taxi]
     AirbaseCoord = AI_ATC_Vec3
     UnitCoord = Unit:GetCoordinate()
-    RunwayHeading = AI_ATC:ExtractRunwayHeading(Runway)
+    RunwayHeading = AI_ATC.Runways.Landing[5]
     InitialRange = UnitCoord:Get2DDistance(AirbaseCoord)
     TrafficOnFinal = false
     TrafficTrigger = false
@@ -17147,7 +17650,7 @@ function AI_ATC:RollOutLanding(Alias)
   
   AI_ATC:TerminateSchedules(Alias)
   
-  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:RollOut(Alias) end, Transmitter)==false then
+  if AI_ATC:FunctionDelay(Alias, function() AI_ATC:RollOutLanding(Alias) end, Transmitter)==false then
     return
   end
   USERSOUND:New("RADIO_TRANS_START.ogg"):ToUnit(Unit)
@@ -17317,7 +17820,7 @@ function AI_ATC:TowerPAR(Alias)
     WindSpeed     = tostring(math.floor(UTILS.MpsToKnots(WindSpeed) - 0.5))
     SchedulerCount = 0
     FieldElevMSL = TouchDownPoint:GetLandHeight()
-    RunwayHeading = 209
+    RunwayHeading = AI_ATC.Runways.Landing[5]
     DecisionHeight = 76
     GlideslopeAngle = 3.0
     GlideslopeRad = math.rad(GlideslopeAngle)
@@ -17899,9 +18402,7 @@ function AI_ATC:TowerPAR(Alias)
       local velocity2D = V2(velocity)
       local groundSpeed = norm(velocity2D)
       local groundSpeedKts = groundSpeed * 1.94384
-      
-      -- Magnetic declination
-      local magVar = 11.0
+      local magVar = AI_ATC.MagDec
       
       -- Ground track
       local actualTrackTrue
@@ -19197,7 +19698,7 @@ end
 --*******************************************************************************START AI_ATC************************************************************************************--
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function AI_ATC:Start()
-  local Subtitle = "*************************************************AI_ATC(Nellis AFB) v2.9.22 HAS STARTED*****************************************************************"
+  local Subtitle = "*************************************************AI_ATC(Nellis AFB) v2.9.23 HAS STARTED*****************************************************************"
   env.info(Subtitle)
   AI_ATC:EnableCrewChief(true)
   AI_ATC:InitATIS()
